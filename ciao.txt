@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 ciao funziona
 kjkjn
 wg
 wgwgwgg
 wgrwrgrg
 modificaaaaaa
+=======
+git config --global user.email ""
+git config --global user.name ""
+>>>>>>> 2de67c7750d176c81feca91b3afca36d07a60887
