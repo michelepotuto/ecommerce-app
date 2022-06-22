@@ -2,15 +2,18 @@ ciao funziona
 kjkjn
 <<<<<<< HEAD
 
-=======
 wg
 wgwgwgg
 wgrwrgrg
->>>>>>> 533da2c499fa4495a586a8a22c2d2a24c7672e65
 qualcosa 
+<<<<<<< HEAD
 spfokposkf 
 gsgsef
 se
 fes
 feswef
 ew
+=======
+spfokposkf
+sdoviknsdmsd
+>>>>>>> 670577e053d495b6749a321cb105c2baff60f6e9
