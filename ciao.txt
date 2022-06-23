@@ -32,3 +32,16 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+
+
+
+
+{/* <Navbar/>
+        <Routes>
+        <Route path='/' element={<Home />} />
+        {/* <Route path='/prodotti' element={<Prodotti />} /> */}
+        <Route path='/login' element={<Login />} />
+        {/* <Route path='/carrello' element={<Carrello />} /> */}
+        </Routes>
+    <Footer/> */}

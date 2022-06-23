@@ -1,4 +1,7 @@
-import firebase from "firebase";
+import { getDatabase, ref, get, child } from "firebase/database";
+import { initializeApp } from "firebase/app";
+import { useEffect, useState } from "react";
+import Singolo from "./Singolo";
 
 const Socio = () => {
   // Your web app's Firebase configuration
@@ -14,11 +17,36 @@ const Socio = () => {
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  initializeApp(firebaseConfig);
 
-  const database = getDatabase(app);
-  
-  return <>ciao socio, provo a leggere dal db: </>;
+  const [productList, setProductList] = useState([]);
+
+    const productListHandler = (val) => {
+    setProductList(val);
+
+  }; 
+  const dbRef = ref(getDatabase());
+
+  useEffect(() => {
+    get(child(dbRef, `product`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          productListHandler(snapshot.val());
+        } else {
+          alert("No data available");
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }, []);
+/*    console.log(productList); */
+
+   
+  return <>ciao socio, provo a leggere dal db: {productList.map(
+    (prodotto) => <Singolo prodotto={prodotto} key={prodotto.id}/>
+    )}
+    </>;
 };
 
 export default Socio;
