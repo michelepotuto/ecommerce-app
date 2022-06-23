@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
+import useCart from '../hooks/use-cart';
 
 const Navbar = () => {
+  const { cartCount } = useCart();
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="navbar-brand">
@@ -45,7 +47,8 @@ const Navbar = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Carrello
+              Carrello ({cartCount})
+          
             </NavLink>
             <div
               className="dropdown-menu"
