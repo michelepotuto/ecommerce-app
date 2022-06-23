@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from "react-router-dom";
 import useCart from '../hooks/use-cart';
 
+
 const Navbar = () => {
   const { cartCount } = useCart();
   return (
@@ -54,12 +55,12 @@ const Navbar = () => {
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              {/* <a className="dropdown-item">
+              {/* <NavLink className="dropdown-item">
                 Vai al carrello
-              </a>
-              <a className="dropdown-item">
+              </NavLink>
+              <NavLink className="dropdown-item">
                 Acquista
-              </a> */}
+              </NavLink> */}
 
             </div>
           </li>

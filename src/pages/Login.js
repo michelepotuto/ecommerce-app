@@ -6,6 +6,7 @@ function Login() {
     // React States
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+      // const [user, setUser] = useState();
   
     // User Login info
     const database = [
@@ -63,7 +64,7 @@ function Login() {
             {renderErrorMessage("uname")}
           </div>
           <div className="input-container">
-            <label>Password </label>
+            <label>Codice cliente </label>
             <input type="password" name="pass" required />
             {renderErrorMessage("pass")}
           </div>
@@ -77,7 +78,6 @@ function Login() {
     return (
       <div className="app">
         <div className="login-form">
-          <div className="title">Accedi</div>
           {isSubmitted ? <div>Sei loggato nel tuo account!</div> : renderForm}
         </div>
       </div>
