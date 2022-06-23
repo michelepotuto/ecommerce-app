@@ -100,5 +100,14 @@ input[type="submit"]:hover {
   gap: 8px;
   margin: 10px;
 }
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin: 10px;
+  background: #b4995b;
+  border-radius: 15px;
+}
 
 /* FINE LOGIN CSS */
