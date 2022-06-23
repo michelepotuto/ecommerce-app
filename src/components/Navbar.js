@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
 
+
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -51,12 +52,12 @@ const Navbar = () => {
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              {/* <a className="dropdown-item">
+              {/* <NavLink className="dropdown-item">
                 Vai al carrello
-              </a>
-              <a className="dropdown-item">
+              </NavLink>
+              <NavLink className="dropdown-item">
                 Acquista
-              </a> */}
+              </NavLink> */}
 
             </div>
           </li>
