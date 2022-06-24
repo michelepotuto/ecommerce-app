@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="navbar-brand">
-        SHOP
+      ☫ TEAM SHOP
       </div>
       <button
         className="navbar-toggler"
@@ -44,27 +44,26 @@ const Navbar = () => {
               className="nav-link dropdown-toggle"
               to="/carrello"
               id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
+              role="button"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Carrello ({cartCount})
           
             </NavLink>
-            <div
-              className="dropdown-menu"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              {/* <NavLink className="dropdown-item">
-                Vai al carrello
-              </NavLink>
-              <NavLink className="dropdown-item">
-                Acquista
-              </NavLink> */}
 
-            </div>
+
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><NavLink className="dropdown-item" to="/">Action</NavLink></li>
+            <li><NavLink className="dropdown-item" to="/">Another action</NavLink></li>
+            <li><NavLink className="dropdown-item" to="/">Something else here</NavLink></li>
+          </ul>
+
+  
           </li>
+          
         </ul>
+        
       </div>
     </nav>
   );

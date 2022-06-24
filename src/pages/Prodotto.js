@@ -16,14 +16,16 @@ const Prodotto = (props) => {
     props.action(props.prodotto)
   } 
 
-  return  (<div className="card" >
+  return  ( 
+  <div className="card" >
   <img className="card-img-top" src="" alt=""/>
   <div className="card-body">
     <h5 className="card-title">Asus</h5>
     <p className="card-text">e bello molto bello </p>
     {!props.isShop && <button onClick={actionHandler}>Vedi di piu</button>}
   </div>
-</div>);
+</div>
+);
 
 
 

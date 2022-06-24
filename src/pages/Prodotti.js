@@ -46,7 +46,9 @@ const Prodotti = () => {
   return (
     <>
        {list.map((prodotto) => (
+        <div className="container">
         <Singolo prodotto={prodotto} key={prodotto.id} />
+        </div>
       ))} 
     </>
   )

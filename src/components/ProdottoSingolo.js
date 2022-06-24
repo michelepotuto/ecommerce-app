@@ -7,8 +7,7 @@ const Singolo = (prop) => {
     prop.prodotto;
   const { addToCart } = useCart();
   return (
-    <div>
-      <div>
+      
         <div className="card">
           <div class="row align-items-center">
             <div class="col">
@@ -30,14 +29,12 @@ const Singolo = (prop) => {
                 </Button>
               </div>
             </div>
-            <div class="col">
-              <div className="card text-end">
-                <Link to="/">Dettagli</Link>
+            
+              <div className="card_text-end">
+                <Link to="/">Vai ai dettagli ⇢</Link>
               </div>
-            </div>
+            
           </div>
-        </div>
-      </div>
 
       {/*  {nome} <br></br>
         {categoria} <br></br>
