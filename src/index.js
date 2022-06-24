@@ -9,17 +9,11 @@ import store from './store/cart-store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <BrowserRouter>
-<<<<<<< HEAD
 <Provider store={store}>
  
     <App />
   
   </Provider>
-=======
-  {/* <React.StrictMode> */}
-    <App />
- {/*  </React.StrictMode> */}
->>>>>>> cf8e0559e7b9c1d80c02d56719775aaefe614596
   </BrowserRouter>
 );
 

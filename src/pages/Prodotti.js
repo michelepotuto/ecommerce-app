@@ -9,7 +9,7 @@ const Prodotti = () => {
         addToCart
       } = useCart();
   return (
-    <div><div className="card">
+    <div className="card">
     <img src="" className="card-img-top" alt="..."/>
     <div className="card-body">
       <h5 className="card-title">Card title</h5>
@@ -26,7 +26,7 @@ const Prodotti = () => {
         </Button>
       {/* <a href="#" className="btn btn-primary">vedi</a> */}
     </div>
-  </div></div>
+  </div>
   )
 }
 
