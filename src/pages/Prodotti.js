@@ -1,32 +1,54 @@
-import useCart from '../hooks/use-cart'
-import React from 'react'
-import Button from '../components/Button'
-
-
+import React, { useEffect } from 'react'
+import Singolo from '../components/ProdottoSingolo';
+import { getDatabase, ref, get, child } from "firebase/database";
+import { initializeApp } from "firebase/app";
 
 const Prodotti = () => {
-    const {
-        addToCart
-      } = useCart();
+  const [list, setList] = React.useState([]);
+
+  const updateProducts= () => {
+    console.log("Eseguo l'update");
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUXunK44MPnDGgA3uHgI88tlFG9rWb8Ao",
+      authDomain: "stage-app-109c7.firebaseapp.com",
+      databaseURL:
+        "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "stage-app-109c7",
+      storageBucket: "stage-app-109c7.appspot.com",
+      messagingSenderId: "179813620715",
+      appId: "1:179813620715:web:900fabfc49592e176e97ae",
+    };
+
+    // Initialize Firebase
+    initializeApp(firebaseConfig);
+    const dbRef = ref(getDatabase());
+
+      get(child(dbRef, `product`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setList(snapshot.val());
+          } else {
+            alert("No data available");
+          }
+        })
+        .catch((error) => {
+          alert(error);
+        });
+  };
+  useEffect(() =>
+    {
+      updateProducts();
+    },[]);
+  
+
+
   return (
-    <div><div className="card">
-    <img src="" className="card-img-top" alt="..."/>
-    <div className="card-body">
-      <h5 className="card-title">Card title</h5>
-      <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <p className= "Prezzo">600</p>
-      <Button onClick={() =>{ addToCart({
-  "id": "01",
-  "name": "iPhone 12",
-  "price": 600,
-  "brand": "Apple",
-  "description": "5G, Oled Screen, iOS"
-}) }}>
-          Add to cart
-        </Button>
-      {/* <a href="#" className="btn btn-primary">vedi</a> */}
-    </div>
-  </div></div>
+    <>
+       {list.map((prodotto) => (
+        <Singolo prodotto={prodotto} key={prodotto.id} />
+      ))} 
+    </>
   )
 }
 

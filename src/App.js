@@ -19,7 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         {/* { <Route path='/carrello' element={<Cart />} /> } */}
       </Routes>
-      <Footer />
+       <Footer />
     </Fragment>
   );
 }
