@@ -21,10 +21,9 @@ const Socio = () => {
 
   const [productList, setProductList] = useState([]);
 
-    const productListHandler = (val) => {
+  const productListHandler = (val) => {
     setProductList(val);
-
-  }; 
+  };
   const dbRef = ref(getDatabase());
 
   useEffect(() => {
@@ -40,13 +39,16 @@ const Socio = () => {
         alert(error);
       });
   }, []);
-/*    console.log(productList); */
+  /*    console.log(productList); */
 
-   
-  return <>ciao socio, provo a leggere dal db: {productList.map(
-    (prodotto) => <Singolo prodotto={prodotto} key={prodotto.id}/>
-    )}
-    </>;
+  return (
+    <>
+      ciao socio, provo a leggere dal db:{" "}
+      {productList.map((prodotto) => (
+        <Singolo prodotto={prodotto} key={prodotto.id} />
+      ))}
+    </>
+  );
 };
 
 export default Socio;

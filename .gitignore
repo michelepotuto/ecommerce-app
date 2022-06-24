@@ -1,4 +1,8 @@
 <<<<<<< HEAD
+node_modules
+node_modules/.package-lock.json
+=======
+<<<<<<< HEAD
 package-lock.json
 node_modules
 =======
@@ -6,3 +10,4 @@ node_modules
 package-lock.json
 src/pages/Cart.js
 >>>>>>> e602700000ad01f9ea6a2b3f64cbd661b026cb31
+>>>>>>> a15d840f387a9902e322d10e3de72cd5da7900e6
