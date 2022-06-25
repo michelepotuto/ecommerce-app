@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Button from "../components/Button";
 /* import useCart from "../hooks/use-cart"; */
 const Singolo = (prop) => {
@@ -33,9 +33,17 @@ const Singolo = (prop) => {
                 </Button>
               </div>
             </div>
+<<<<<<< HEAD
+            <div class="col">
+              <div className="card text-end">
+              <NavLink ClassName="card text-end" to="/ProdottoDettagliato">
+              Dettagli
+            </NavLink>
+=======
             
               <div className="card_text-end">
                 <Link to="/">Vai ai dettagli ⇢</Link>
+>>>>>>> c8704ff5d34588135dec6834216274a19d91bada
               </div>
             
           </div>
