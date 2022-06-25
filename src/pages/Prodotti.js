@@ -2,9 +2,17 @@ import React, { useEffect } from 'react'
 import Singolo from '../components/ProdottoSingolo';
 import { getDatabase, ref, get, child } from "firebase/database";
 import { initializeApp } from "firebase/app";
+import CartContext from '../context/cart-context';
 
 const Prodotti = () => {
+  const ctx = React.useContext(CartContext);
+
   const [list, setList] = React.useState([]);
+
+  const addToCartHandler = (value) => {
+    ctx.addToCart(value);
+    console.log("handelr had");
+  };
 
   const updateProducts= () => {
     console.log("Eseguo l'update");
@@ -46,9 +54,7 @@ const Prodotti = () => {
   return (
     <>
        {list.map((prodotto) => (
-        <div className="container">
-        <Singolo prodotto={prodotto} key={prodotto.id} />
-        </div>
+        <Singolo prodotto={prodotto} key={prodotto.id} addToCart={addToCartHandler} />
       ))} 
     </>
   )
