@@ -1,4 +1,5 @@
 
+/* NAVBAR CSS */
 
 .navbar-brand {
   margin-left: 10px;
@@ -39,6 +40,7 @@ nav .nav-link.active {
   line-height: 60px;
   background-color: #f5f5f5;
 }
+/* FINE NAVBAR CSS */
 
 
 /* LOGIN CSS */
@@ -119,7 +121,7 @@ input[type="submit"]:hover {
 /* FINE LOGIN CSS */
 
 
-/*CARD IMG*/
+/*CARD CSS*/
 
 .img-thumbnail {
 
@@ -144,7 +146,7 @@ input[type="submit"]:hover {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  width: 30rem;
+  width: 50rem;
   padding: 10px 20px;
   margin: 10px;
   box-shadow: 6px 6px 2px rgb(123, 122, 122), 6px 6px 10px rgb(177, 179, 177);
@@ -205,7 +207,4 @@ a:-webkit-any-link {
 }
 
 
-
-
-
-/*FINE CARD IMG  */
+/*FINE CARD CSS*/
