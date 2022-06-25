@@ -7,8 +7,7 @@ const Singolo = (prop) => {
     
   /* const { addToCart } = useCart(); */
   return (
-    <div>
-      <div>
+      
         <div className="card">
           <div className="row align-items-center">
             <div className="col-md-4 float-start">
@@ -35,14 +34,17 @@ const Singolo = (prop) => {
                 >
                   Add to cart
                 </Button>
-              
+              </div>
             </div>
+            
+              <div className="card_text-end">
+                <Link to="/">Vai ai dettagli ⇢</Link>
+              </div>
+            
           </div>
-        </div>
-      </div>
 
      
-    </div>
+    
   );
 };
 

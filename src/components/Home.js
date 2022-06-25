@@ -1,28 +1,24 @@
 import React from 'react'
+import logo1 from '../assets/Apple_iphone.jpg';
+import logo2 from '../assets/Asus_rog.jpg';
+import logo3 from '../assets/Sedia_gaming.jpg';
 
 const Home = () => (
-  <div className="h1"> <hr></hr> BENVENUTO NELLO SHOP! <hr></hr>
-<div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+  <div className="h1"> <hr></hr> ⮊ BENVENUTO IN TEAM SHOP! ⮈<hr></hr>
+<div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">
-      <img src="..." className="d-block w-100" alt="..."/>
+      <img src={logo1} className="d-block w-100" alt="logo1"/>
     </div>
     <div className="carousel-item">
-      <img src="..." className="d-block w-100" alt="..."/>
+      <img src={logo2} className="d-block w-100" alt="logo2"/>
     </div>
     <div className="carousel-item">
-      <img src="..." className="d-block w-100" alt="..."/>
+      <img src={logo3} className="d-block w-100" alt="logo3"/>
     </div>
   </div>
-  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span className="visually-hidden">Previous</span>
-  </button>
-  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-    <span className="visually-hidden">Next</span>
-  </button>
 </div>
 </div>
+
   )
   export default Home;
