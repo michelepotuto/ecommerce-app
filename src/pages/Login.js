@@ -22,7 +22,7 @@ function Login() {
   
     const errors = {
       uname: "invalid username",
-      pass: "invalid password"
+      pass: "invalid client code"
     };
   
     const handleSubmit = (event) => {
