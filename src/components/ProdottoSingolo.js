@@ -7,7 +7,7 @@ const Singolo = (prop) => {
     
   /* const { addToCart } = useCart(); */
   return (
-      
+      <>
         <div className="card">
           <div className="row align-items-center">
             <div className="col-md-4 float-start">
@@ -44,6 +44,7 @@ const Singolo = (prop) => {
           </div>
 
      
+     </>
     
   );
 };
