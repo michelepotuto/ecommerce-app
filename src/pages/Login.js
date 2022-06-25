@@ -3,9 +3,9 @@ import { useState } from "react";
 
 
 function Login() {
-    // React States
+    // React States + localStorage (login persistente)
     const [errorMessages, setErrorMessages] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(JSON.parse(localStorage.getItem('is-submitted')) || false);
       // const [user, setUser] = useState();
   
     // User Login info
@@ -26,6 +26,8 @@ function Login() {
     };
   
     const handleSubmit = (event) => {
+      // local storage per login persistente
+      localStorage.setItem('is-submitted', JSON.stringify(!isSubmitted));
       //Prevent page reload
       event.preventDefault();
   
