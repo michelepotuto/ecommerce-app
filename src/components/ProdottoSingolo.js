@@ -7,7 +7,7 @@ const Singolo = (prop) => {
     
   /* const { addToCart } = useCart(); */
   return (
-      
+      <div className="container">
         <div className="card">
           <div className="row align-items-center">
             <div className="col-md-4 float-start">
@@ -20,9 +20,6 @@ const Singolo = (prop) => {
                 </h5>
                 <p className="card-text">{descrizioneB}</p>
                 <p className="Prezzo">{prezzo} € </p>
-                <div className="card text-end">
-                <Link to="/">Dettagli</Link>
-              </div>
               </div>
             </div>
             <div className="col"><Button
@@ -42,7 +39,7 @@ const Singolo = (prop) => {
               </div>
             
           </div>
-
+          </div>
      
     
   );
