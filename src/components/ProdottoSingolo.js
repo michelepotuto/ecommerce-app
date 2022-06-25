@@ -41,6 +41,7 @@ const Singolo = (prop) => {
           </div>
           </div>
      
+     
     
   );
 };
