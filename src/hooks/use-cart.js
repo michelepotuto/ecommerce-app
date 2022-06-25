@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cart-store";
 
+
 const useCart = () => {
   const cartItems = useSelector((store) => store.cart);
   const cartCount = cartItems.length;
@@ -9,6 +10,7 @@ const useCart = () => {
   const dispatch = useDispatch();
   
   const addToCart = (phone) => {
+    console.log("add");
     dispatch({ type: cartActions.ADD, phone });
   }
   const removeFromCart = (cartId) => {
