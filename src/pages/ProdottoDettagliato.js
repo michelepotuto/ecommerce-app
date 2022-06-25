@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+
 import Button from "../components/Button";
 import useCart from "../hooks/use-cart";
 
@@ -19,7 +19,7 @@ const Singolo = (prop) => {
                 <h5 className="card-title">
                   {nome} - {categoria}
                 </h5>
-                <p className="card-text">{descrizioneB}</p>
+                <p className="card-text">{descrizioneD}</p>
                 <p className="Prezzo">{prezzo}</p>
                 <Button
                   onClick={() => {
@@ -31,11 +31,7 @@ const Singolo = (prop) => {
               </div>
             </div>
             <div class="col">
-              <div className="card text-end">
-              <NavLink ClassName="card text-end" to="/ProdottoDettagliato">
-              Dettagli
-            </NavLink>
-              </div>
+              
             </div>
           </div>
         </div>
