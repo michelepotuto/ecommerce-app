@@ -37,7 +37,7 @@ const Singolo = (prop) => {
         </div>
       </div>
 
-      {/*  {nome} <br></br>
+       {/* {nome} <br></br>
         {categoria} <br></br>
         {descrizioneB}<br></br>
         {descrizioneD}<br></br>

@@ -41,6 +41,11 @@ const Singolo = (prop) => {
             
              
             
+              <div className="card_text-end">
+                <NavLink to="/">Vai ai dettagli ⇢</NavLink>
+              </div>
+            
+            
           </div>
           </div>
      
