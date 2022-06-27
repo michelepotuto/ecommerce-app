@@ -47,12 +47,18 @@ const Singolo = (prop) => {
             
             
           </div>
+          
           </div>
+
+
+          </div>
+          </div>
+          
      
      
     
   );
-};
+} ;
 
 
 export default Singolo;
