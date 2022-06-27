@@ -1,10 +1,13 @@
 
-import Button from "../components/Button";
+import Button from "./Button";
 import useCart from "../hooks/use-cart";
 
-const Singolo = (prop) => {
-  const { nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo } =
-    prop.prodotto;
+const ProdottoDettagliato = (prop) => {
+  const storageKey3 = "user-cart-detail";
+  const prodottoDettagliato = JSON.parse(localStorage.getItem(storageKey3));
+  
+   const { nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo } =
+    prodottoDettagliato; 
   const { addToCart } = useCart();
   return (
     <div>
@@ -30,23 +33,12 @@ const Singolo = (prop) => {
                 </Button>
               </div>
             </div>
-            <div class="col">
-              
-            </div>
+            
           </div>
         </div>
       </div>
-
-       {/* {nome} <br></br>
-        {categoria} <br></br>
-        {descrizioneB}<br></br>
-        {descrizioneD}<br></br>
-        {quantità}<br></br>
-        <img src={img}></img>
-
-        <hr></hr> */}
-    </div>
+      </div>
   );
 };
 
-export default Singolo;
+export default ProdottoDettagliato;

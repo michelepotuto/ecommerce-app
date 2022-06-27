@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import useCart from "../hooks/use-cart";
 import { Prodotto } from '../model/ProductClass';
@@ -8,6 +8,8 @@ const Singolo = (prop) => {
   const storageKey2 = "user-cart-count";
 
   const addToCartHandler = (product) => {
+    console.log("class prodotto: " + product);
+
     console.log("aggiunto al localStorage:" + product);
     if (!localStorage.getItem(storageKey2)) {
 /*       console.log("COUNT " + localStorage.getItem(storageKey));
@@ -18,9 +20,9 @@ const Singolo = (prop) => {
     }
 
     if (!localStorage.getItem(storageKey)) {
-      localStorage.setItem(storageKey, product);
+      localStorage.setItem(storageKey, JSON.stringify(product));
     } else {
-      const storageCart = [localStorage.getItem(storageKey), product];
+      const storageCart = [localStorage.getItem(storageKey), JSON.stringify(product)];
       localStorage.setItem(storageKey, storageCart);
     }
 
@@ -29,8 +31,14 @@ const Singolo = (prop) => {
 
   const { id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo } =
     prop.prodotto;
+  const p = new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo);
 
   const { addToCart } = useCart();
+
+  const detailHandler = () => {
+    const storageKey3 = "user-cart-detail";
+    localStorage.setItem(storageKey3, JSON.stringify(prop.prodotto));
+  }
   return (
     <div className="container">
       <div className="card">
@@ -50,7 +58,7 @@ const Singolo = (prop) => {
           <div className="col"><Button
             onClick={() => {
               addToCart(prop.prodotto);
-              addToCartHandler(new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo));
+              addToCartHandler(prop.prodotto);//new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo)
               console.log("Singolo add : " + prop.prodotto);
               /*  addToCart(prop.prodotto); */
             }}
@@ -59,20 +67,10 @@ const Singolo = (prop) => {
           </Button>
           </div>
         </div>
-        <div class="col">
-          <div className="card text-end">
-            <NavLink ClassName="card text-end" to="/ProdottoDettagliato">
-              Dettagli
-            </NavLink>
-
-
-
+        <div className="col">
             <div className="card_text-end">
-              <NavLink to="/">Vai ai dettagli ⇢</NavLink>
+              <Link to="/dettaglio" onClick={detailHandler}>Vai ai dettagli ⇢</Link>
             </div>
-
-
-          </div>
         </div>
 
       </div>
