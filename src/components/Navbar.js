@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import useCart from '../hooks/use-cart';
 
 
 const Navbar = () => {
-  const { cartCount } = useCart();
+
+  const [cartCount, setCartCount] = useState(0);
+  const storageKey2 = "user-cart-count";
+
+  useEffect(() => {
+
+  if (localStorage.getItem(storageKey2)) {
+    setCartCount(parseInt(localStorage.getItem(storageKey2)));
+  }
+  },[]);
+  /* const cartCountHandler = (val) => {
+    setCartCount(val);
+  }
+
+  if(localStorage.getItem("user-cart-count")){
+    cartCountHandler(parseInt(localStorage.getItem("user-cart-count")));
+  } */
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="navbar-brand">

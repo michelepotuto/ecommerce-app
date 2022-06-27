@@ -1,11 +1,36 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-/* import useCart from "../hooks/use-cart"; */
+import useCart from "../hooks/use-cart";
+import { Prodotto } from '../model/ProductClass';
+
 const Singolo = (prop) => {
-  const { nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo } =
+  const storageKey = "user-cart";
+  const storageKey2 = "user-cart-count";
+
+  const addToCartHandler = (product) => {
+    console.log("aggiunto al localStorage:" + product);
+    if(!localStorage.getItem(storageKey2)){
+/*       console.log("COUNT " + localStorage.getItem(storageKey));
+ */      localStorage.setItem(storageKey2, 1);
+    }else{
+      const prev = parseInt(localStorage.getItem(storageKey2)) + 1;
+      localStorage.setItem(storageKey2, prev);
+    }
+
+    if(!localStorage.getItem(storageKey)){
+      localStorage.setItem(storageKey, product);
+    }else{
+     const storageCart = [localStorage.getItem(storageKey),product];
+    localStorage.setItem(storageKey, storageCart);
+    }
+    
+/*     console.log("aggiunto al localStorage:" + JSON.stringify(product));
+ */  };
+
+  const {id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo } =
     prop.prodotto;
     
-  /* const { addToCart } = useCart(); */
+  const { addToCart } = useCart(); 
   return (
       <div className="container">
         <div className="card">
@@ -24,7 +49,8 @@ const Singolo = (prop) => {
             </div>
             <div className="col"><Button
                   onClick={() => {
-                   prop.addToCart(prop.prodotto);
+                    addToCart(prop.prodotto);
+                    addToCartHandler(new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo));
                    console.log("Singolo add : " + prop.prodotto);
                    /*  addToCart(prop.prodotto); */
                   }}
