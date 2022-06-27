@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import useCart from '../hooks/use-cart';
+import { Dropdown } from 'react-bootstrap';
 
 
 const Navbar = () => {
@@ -56,28 +57,24 @@ const Navbar = () => {
               Login
             </NavLink>
           </li>
-          <li className="nav-item dropdown">
-            <NavLink
-              className="nav-link dropdown-toggle"
-              to="/carrello"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Carrello ({cartCount})
-          
-            </NavLink>
+   
 
 
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><NavLink className="dropdown-item" to="/">Action</NavLink></li>
-            <li><NavLink className="dropdown-item" to="/">Another action</NavLink></li>
-            <li><NavLink className="dropdown-item" to="/">Something else here</NavLink></li>
-          </ul>
+            <Dropdown>
+  <Dropdown.Toggle variant="success">
+  
+  Carrello ({cartCount})
+            
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+   <NavLink to="/carrello">&nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello</NavLink>
+    <Dropdown.Item href="#/action-2">Pagamento </Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
 
   
-          </li>
+        
           
         </ul>
         

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Button from "../components/Button";
 import useCart from "../hooks/use-cart";
 import { Prodotto } from '../model/ProductClass';
@@ -59,10 +59,18 @@ const Singolo = (prop) => {
                 </Button>
               </div>
             </div>
+            <div class="col">
+              <div className="card text-end">
+              <NavLink ClassName="card text-end" to="/ProdottoDettagliato">
+              Dettagli
+            </NavLink>
+            
+             
             
               <div className="card_text-end">
-                <Link to="/">Vai ai dettagli ⇢</Link>
+                <NavLink to="/">Vai ai dettagli ⇢</NavLink>
               </div>
+            
             
           </div>
           </div>
@@ -71,5 +79,6 @@ const Singolo = (prop) => {
     
   );
 };
+
 
 export default Singolo;

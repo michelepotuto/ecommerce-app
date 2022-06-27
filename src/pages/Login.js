@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState } from "react";
 
+const storageKey = 'is-submitted';
 
 function Login() {
-    // React States
+    // React States + localStorage (login persistente)
     const [errorMessages, setErrorMessages] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(JSON.parse(localStorage.getItem(storageKey)) || false);
       // const [user, setUser] = useState();
   
     // User Login info
@@ -26,6 +27,8 @@ function Login() {
     };
   
     const handleSubmit = (event) => {
+      // local storage per login persistente
+      localStorage.setItem(storageKey, JSON.stringify(!isSubmitted));
       //Prevent page reload
       event.preventDefault();
   
@@ -74,13 +77,20 @@ function Login() {
         </form>
       </div>
     );
+
+
+    const logout = () => {
+      setIsSubmitted('');
+       localStorage.removeItem(storageKey);
+    }
   
     return (
       <div className="app">
         <div className="login-form">
-          {isSubmitted ? <div>Sei loggato nel tuo account!</div> : renderForm}
+          {isSubmitted ? <div className='button_logout'>Sei loggato nel tuo account! ⇢ <button onClick={logout}>Logout</button></div>  : renderForm}
         </div>
       </div>
+      
     );
   }
 

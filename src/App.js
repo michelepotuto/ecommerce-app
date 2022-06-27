@@ -7,6 +7,9 @@ import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import Footer from "./components/Footer";
 import Prodotti from "./pages/Prodotti";
+import ProdottoDettagliato from "./pages/ProdottoDettagliato"
+
+//import Cart from './pages/Cart';
 import Carrello from "./pages/Carrello";
 
 function App() {
@@ -17,6 +20,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/prodotti" element={<Prodotti />} />
         <Route path="/login" element={<Login />} />
+        {<Route path="/prodottodettagliato" element={<ProdottoDettagliato/>} /> }
+        {/* { <Route path='/carrello' element={<Cart />} /> } */}
         { <Route path='/carrello' element={<Carrello />} /> } 
       </Routes>
        <Footer />
