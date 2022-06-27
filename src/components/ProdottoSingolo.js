@@ -60,19 +60,16 @@ const Singolo = (prop) => {
           </div>
         </div>
         <div class="col">
-          <div className="card text-end">
-            <NavLink ClassName="card text-end" to="/ProdottoDettagliato">
-              Dettagli
-            </NavLink>
+
 
 
 
             <div className="card_text-end">
-              <NavLink to="/">Vai ai dettagli ⇢</NavLink>
+              <NavLink to=".components/prodottodettagliato">Vai ai dettagli ⇢</NavLink>
             </div>
 
 
-          </div>
+
         </div>
 
       </div>
