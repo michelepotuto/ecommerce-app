@@ -6,7 +6,7 @@ const ProdottoDettagliato = (prop) => {
   const storageKey3 = "user-cart-detail";
   const prodottoDettagliato = JSON.parse(localStorage.getItem(storageKey3));
   
-   const { nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo } =
+   const { nome, categoria, descrizioneD, img,  prezzo } =
     prodottoDettagliato; 
   const { addToCart } = useCart();
   return (

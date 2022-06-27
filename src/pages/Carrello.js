@@ -10,29 +10,34 @@ const Carrello = () => {
 
 
   useEffect(() => {
-    /*     if (localStorage.getItem(storageKey)) {
-          const t = localStorage.getItem(storageKey);
-          const v = [storageCart,t];
-    /*        console.log("qualcosa : " + v); //JSON.parse(JSON.stringify(t))
-     */     /*  setStorageCart(v);
-      }else{
-        
-      } */
     if (localStorage.getItem(storageKey2)) {
       console.log(JSON.parse("[" + localStorage.getItem(storageKey) + "]"))
       setLength(parseInt(localStorage.getItem(storageKey2)));
       const t = JSON.parse("[" + localStorage.getItem(storageKey) + "]");
-      /*       const json = JSON.parse(t);*/
       setStorageCart(t);
-
       console.log("typeof: " + typeof storageCart);
 
     }
   }, [length]);
 
+  const removeFromCart = useEffect((key) => {
+    if (localStorage.getItem(storageKey2)) {
+      //console.log(JSON.parse("[" + localStorage.getItem(storageKey) + "]"))
+      
 
+     /*  const prev = parseInt(localStorage.getItem(storageKey2)) - 1;
+      localStorage.setItem(storageKey2, prev);
+      setLength(prev);
 
+      const t = JSON.parse("[" + localStorage.getItem(storageKey) + "]");
+      const newCart = t.filter((s) => s.key === key)
+      setStorageCart(newCart);
+      localStorage.setItem(storageKey, newCart);
 
+      console.log("typeof: " + typeof storageCart); */
+
+    }}, []);
+  
 
   return (
     <>
@@ -55,7 +60,7 @@ const Carrello = () => {
                     <p className="Prezzo">{prodotto.prezzo} € </p>
                   </div>
                 </div>
-                <div className="col"><button>
+                <div className="col"><button onClick={removeFromCart(key)}>
                   REMOVE         
                    </button>
                 </div>
@@ -63,13 +68,6 @@ const Carrello = () => {
             </div>
           </div>))
       }
-
-      {/*  { !length && storageCart.map( (prodotto) => (
-        <Singolo prodotto={prodotto} key={prodotto.id} /> )) */}
-
-      {/*   .map((prodotto) => (
-        <Singolo prodotto={prodotto} key={prodotto.id} /> ))
-      }  */}
     </>
   )
 }

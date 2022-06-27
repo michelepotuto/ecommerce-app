@@ -10,15 +10,15 @@ const Navbar = () => {
   const storageKey2 = "user-cart-count";
 
   useEffect(() => {
-  if (localStorage.getItem(storageKey2)) {
-    setCartCount(parseInt(localStorage.getItem(storageKey2)));
-  }
-  },[]);
-  
+    if (localStorage.getItem(storageKey2)) {
+      setCartCount(parseInt(localStorage.getItem(storageKey2)));
+    }
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="navbar-brand">
-      ☫ TEAM SHOP
+        ☫ TEAM SHOP
       </div>
       <button
         className="navbar-toggler"
@@ -35,9 +35,9 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item active">
-          <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link" to="/">
               Home
-              </NavLink>
+            </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/prodotti">
@@ -45,31 +45,31 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-          <NavLink className="nav-link" to="/login">
+            <NavLink className="nav-link" to="/login">
               Login
             </NavLink>
           </li>
-   
 
 
-            <Dropdown>
-  <Dropdown.Toggle variant="success">
-  
-  Carrello ({cartCount})
-            
-  </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-   <NavLink to="/carrello">&nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello</NavLink>
-    <Dropdown.Item href="#/action-2">Pagamento </Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
+          <Dropdown>
+            <Dropdown.Toggle variant="success">
 
-  
-        
-          
+              Carrello ({cartCount})
+
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <NavLink to="/carrello">&nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello</NavLink>
+              <Dropdown.Item href="#/action-2">Pagamento </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+
+
+
         </ul>
-        
+
       </div>
     </nav>
   );

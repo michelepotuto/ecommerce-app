@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import useCart from "../hooks/use-cart";
-import { Prodotto } from '../model/ProductClass';
+
 
 const Singolo = (prop) => {
   const storageKey = "user-cart";
   const storageKey2 = "user-cart-count";
+  //console.log("singolo:" + JSON.stringify(prop.prodotto));
 
   const addToCartHandler = (product) => {
-    console.log("class prodotto: " + product);
+    //console.log("class prodotto: " + product);
 
     console.log("aggiunto al localStorage:" + product);
     if (!localStorage.getItem(storageKey2)) {
@@ -20,8 +20,10 @@ const Singolo = (prop) => {
     }
 
     if (!localStorage.getItem(storageKey)) {
+      product.quantita = localStorage.getItem(storageKey2);
       localStorage.setItem(storageKey, JSON.stringify(product));
     } else {
+      product.quantita = localStorage.getItem(storageKey2);
       const storageCart = [localStorage.getItem(storageKey), JSON.stringify(product)];
       localStorage.setItem(storageKey, storageCart);
     }
@@ -29,11 +31,9 @@ const Singolo = (prop) => {
 /*     console.log("aggiunto al localStorage:" + JSON.stringify(product));
  */  };
 
-  const { id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo } =
+  const {  nome, categoria, descrizioneB,  img, quantita, prezzo } =
     prop.prodotto;
-  const p = new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo);
-
-  const { addToCart } = useCart();
+    console.log(quantita);
 
   const detailHandler = () => {
     const storageKey3 = "user-cart-detail";
@@ -53,11 +53,12 @@ const Singolo = (prop) => {
               </h5>
               <p className="card-text">{descrizioneB}</p>
               <p className="Prezzo">{prezzo} € </p>
+              <p className="Prezzo">{quantita}.pz</p>
             </div>
           </div>
           <div className="col"><Button
             onClick={() => {
-              addToCart(prop.prodotto);
+              //addToCart(prop.prodotto);
               addToCartHandler(prop.prodotto);//new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo)
               console.log("Singolo add : " + prop.prodotto);
               /*  addToCart(prop.prodotto); */
