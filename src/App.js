@@ -20,14 +20,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/prodotti" element={<Prodotti />} />
         <Route path="/login" element={<Login />} />
-<<<<<<< HEAD
-        {<Route path="/prodottodettagliato:prodottoid" element={<ProdottoDettagliato/>} /> }
-        {/* { <Route path='/carrello' element={<Cart />} /> } */}
-        { <Route path='/carrello' element={<Carrello />} /> } 
-=======
         <Route path='/dettaglio' element={<ProdottoDettagliato/>} /> 
         <Route path='/carrello' element={<Carrello />} />
->>>>>>> da778a550e6d0cd9468b5aeeb9158a0d44e18c60
       </Routes>
        <Footer />
     </Fragment>

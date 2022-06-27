@@ -4,7 +4,6 @@ import useCart from "../hooks/use-cart";
 import { Prodotto } from '../model/ProductClass';
 
 const Singolo = (prop) => {
-  const navigate = useNavigate();
   const storageKey = "user-cart";
   const storageKey2 = "user-cart-count";
 
@@ -69,29 +68,10 @@ const Singolo = (prop) => {
           </div>
           
         </div>
-<<<<<<< HEAD
-        <div class="col">
-          <div className="card_text-end">
-            {/* <NavLink ClassName="card text-end" to="/ProdottoDettagliato/" >
-              Dettagli
-            </NavLink> */}
-            {/* <button onClick={() => {
-              navigate ("/ProdottoDettagliato/" + prop.id)
-            } }> Dettagli </button> */}
-
-<Link  to={"/ProdottoDettagliato/" + prop.id}>
-        Go to details
-      </Link>
-
-
-
-          </div>
-=======
         <div className="col">
             <div className="card_text-end">
               <Link to="/dettaglio" onClick={detailHandler}>Vai ai dettagli ⇢</Link>
             </div>
->>>>>>> da778a550e6d0cd9468b5aeeb9158a0d44e18c60
         </div>
 
       </div>
