@@ -1,4 +1,4 @@
-class ProductClass {
+export class Prodotto {
     constructor({ id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo }) {
       this.id = id;
       this.nome = nome;
@@ -9,6 +9,8 @@ class ProductClass {
       this.quantità = quantità;
       this.prezzo = prezzo;
     }
+    getId(){
+      return this.id;
+    }
   }
   
-  export default ProductClass;
