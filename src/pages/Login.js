@@ -28,7 +28,7 @@ function Login() {
   
     const handleSubmit = (event) => {
       // local storage per login persistente
-      localStorage.setItem(storageKey, JSON.stringify(!isSubmitted));
+
       //Prevent page reload
       event.preventDefault();
   
@@ -44,11 +44,15 @@ function Login() {
           setErrorMessages({ name: "pass", message: errors.pass });
         } else {
           setIsSubmitted(true);
+          localStorage.setItem(storageKey, JSON.stringify(!isSubmitted));
+
         }
       } else {
         // Username not found
         setErrorMessages({ name: "uname", message: errors.uname });
       }
+
+
     };
   
     // Generate JSX code for error message

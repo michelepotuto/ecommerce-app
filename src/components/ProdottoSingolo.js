@@ -67,6 +67,7 @@ const Singolo = (prop) => {
             Add to cart
           </Button>
           </div>
+          
         </div>
         <div className="col">
             <div className="card_text-end">
@@ -77,7 +78,7 @@ const Singolo = (prop) => {
       </div>
     </div>
   );
-};
+} ;
 
 
 export default Singolo;
