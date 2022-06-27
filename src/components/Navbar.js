@@ -10,18 +10,10 @@ const Navbar = () => {
   const storageKey2 = "user-cart-count";
 
   useEffect(() => {
-
   if (localStorage.getItem(storageKey2)) {
     setCartCount(parseInt(localStorage.getItem(storageKey2)));
   }
   },[]);
-  /* const cartCountHandler = (val) => {
-    setCartCount(val);
-  }
-
-  if(localStorage.getItem("user-cart-count")){
-    cartCountHandler(parseInt(localStorage.getItem("user-cart-count")));
-  } */
   
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

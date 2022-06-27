@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import Singolo from '../components/ProdottoSingolo';
 import { getDatabase, ref, get, child } from "firebase/database";
 import { initializeApp } from "firebase/app";
+import { Routes } from 'react-router-dom';
 
 const Prodotti = () => {
   const [list, setList] = React.useState([]);
 
-  const updateProducts= () => {
-    console.log("Eseguo l'update");
+  const updateProducts = () => {
+    //console.log("Eseguo l'update");
     // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCUXunK44MPnDGgA3uHgI88tlFG9rWb8Ao",
@@ -22,34 +23,57 @@ const Prodotti = () => {
 
     // Initialize Firebase
     initializeApp(firebaseConfig);
+
     const dbRef = ref(getDatabase());
 
-      get(child(dbRef, `product`))
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            setList(snapshot.val());
-          } else {
-            alert("No data available");
-          }
-        })
-        .catch((error) => {
-          alert(error);
-        });
+    get(child(dbRef, `product`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setList(snapshot.val());
+        } else {
+          alert("No data available");
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
-  useEffect(() =>
-    {
-      updateProducts();
-      
-    },[]);
-  
-    
+  useEffect(() => {
+    //updateProducts();
+    updateProductsFetch();
+  }, []);
+
+
+  const updateProductsFetch = async () => {
+
+    const response = await fetch("https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/product.json");
+    const responseData = await response.json();
+    const risposta = [];
+
+    for (const p in responseData) {
+      risposta.push({
+        id: responseData[p].id,
+        nome: responseData[p].nome,
+        categoria: responseData[p].categoria,
+        descrizioneB: responseData[p].descrizioneB,
+        descrizioneD: responseData[p].descrizioneD,
+        img: responseData[p].img,
+        quantità: responseData[p].quantità,
+        prezzo: responseData[p].prezzo
+      })
+    }
+    setList(risposta);
+
+  };
 
 
   return (
     <>
-       {list.map((prodotto, key) => (
+      <Routes>
+      </Routes>
+      {list.map((prodotto, key) => (
         <Singolo prodotto={prodotto} key={key} />
-      ))} 
+      ))}
     </>
   )
 }
