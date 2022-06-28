@@ -1,11 +1,18 @@
 import React from "react";
-import App from "../App";
 
-const Logout = () => {
+
+
+
+const Logout = (props) => {
+
   return (
-    <>
-      <App />
-    </>
+  
+      <div>
+        <button onClick={props.logoutFunction} className="inizia_spesa border border-1" >
+        Logout</button>
+
+      </div>
+    
   );
 };
 

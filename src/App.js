@@ -15,12 +15,13 @@ import ProdottoDettagliato from "./components/ProdottoDettagliato";
 import Carrello from "./components/Carrello";
 import Logout from "./components/Logout";
 
+// 
 
 function App() {
   const navigate = useNavigate();
   const token = 'token-info';
   const [isShown, setIsShown] = useState(true);
-  const [isLogged, setIsLoagged] = useState(JSON.parse(sessionStorage.getItem(token)) || false);
+  const [isLogged, setIsLogged] = useState(JSON.parse(sessionStorage.getItem(token)) || false);
   const [input, setInput] = useState("");
   const [list, setList] = useState({});
   const firebaseURLProduct =
@@ -53,6 +54,11 @@ function App() {
     setInput(value);
   };
 
+  const logoutFunction = () => {
+    sessionStorage.removeItem(token);
+    setIsLogged(false);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -60,7 +66,7 @@ function App() {
     const u = { ...userData };
     if (u.codiceCliente === input) {
       sessionStorage.setItem(token, JSON.stringify(userData));
-      setIsLoagged(true);
+      setIsLogged(true);
       setIsShown(false);
       navigate("/home");
     } else {
