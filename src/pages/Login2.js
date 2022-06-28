@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import { useState, useEffect } from "react";
 import useFirebase from '../hooks/use-firebase';
@@ -66,3 +67,10 @@ const Login2 = () => {
 }
 
 export default Login2
+=======
+const Login2 = () => {
+  return;
+};
+
+export default Login2;
+>>>>>>> 3978372f052c6d6cdef3bd346da3f5e7c32e4d93
