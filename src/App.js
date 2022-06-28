@@ -3,7 +3,10 @@ import { Fragment, useEffect, useState } from "react";
 import Application from "./pages/Application";
 import useFirebase from "./hooks/use-firsebase";
 
+
+
 function App() {
+  // Login 
   const [isShown, setIsShown] = useState(true);
   const [isLogged, setIsLoagged] = useState(false);
   const [input, setInput] = useState("");
@@ -50,7 +53,7 @@ function App() {
 
   return (
     <Fragment>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         {isShown && (
           <div>
             <input onChange={usernameChangeHandler} />
@@ -58,9 +61,34 @@ function App() {
           </div>
         )}
         {isLogged && <Application />}
-      </form>
+      </form> */}
+
+      <form className="form" onSubmit={handleSubmit}>
+{isShown && (
+  <div>
+  <div className="input-container">
+
+    <label> Codice cliente </label>
+    <div className="input-container">
+
+    </div>
+    <input type="password" name="pass" required  onChange={usernameChangeHandler}/>
+  </div>
+      <div className="input-container">
+      <input type="submit" />
+    </div>
+    </div>
+
+  )}
+          {isLogged && <Application />}
+</form>
     </Fragment>
   );
 }
 
 export default App;
+
+
+
+
+
