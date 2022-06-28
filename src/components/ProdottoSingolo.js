@@ -12,7 +12,7 @@ const ProdottoSingolo = (prop) => {
     dispatch({ type: counterActions.INCREMENT })
     //console.log("class prodotto: " + product);
 
-    console.log("aggiunto al sessionStorage:" + product);
+    //console.log("aggiunto al sessionStorage:" + product);
     if (!sessionStorage.getItem(storageName.COUNT)) {
 /*       console.log("COUNT " + sessionStorage.getItem(storageName.CART));
  */      sessionStorage.setItem(storageName.COUNT, 1);
@@ -35,7 +35,7 @@ const ProdottoSingolo = (prop) => {
 
   const { nome, categoria, descrizioneB, img, quantita, prezzo } =
     prop.prodotto;
-  console.log(quantita);
+  //console.log(quantita);
 
   const detailHandler = () => {
     sessionStorage.setItem(storageName.DETAIL, JSON.stringify(prop.prodotto));
@@ -62,7 +62,7 @@ const ProdottoSingolo = (prop) => {
             
             onClick={() => {
               addToCartHandler(prop.prodotto);//new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo)
-              console.log("Singolo add : " + prop.prodotto);
+              //console.log("Singolo add : " + prop.prodotto);
             }}
           >
             Add to cart

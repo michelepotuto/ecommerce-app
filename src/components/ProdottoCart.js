@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { storageName } from "../store/counter-store";
+import {   useDispatch } from "react-redux";
+import { counterActions } from "../store/counter-store";
 
 const ProdottoCart = (prop) => {
-
+    const dispatch = useDispatch();
 
 
     const { nome, categoria, descrizioneB, img, quantita, prezzo } =
         prop.prodotto;
 
     const removeFromCart = (key) => {
+
         if (sessionStorage.getItem(storageName.COUNT) ) {
             //console.log(JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]"))
             console.log("remove");
-            const newCount = parseInt(sessionStorage.getItem(storageName.COUNT)) - 1;
+            const newCount = parseInt(sessionStorage.getItem(storageName.COUNT));
             //console.log("new count " + newCount);
             if(newCount === 0){
                 sessionStorage.removeItem(storageName.COUNT);
                 sessionStorage.removeItem(storageName.CART);
             }else{
-                sessionStorage.setItem(storageName.COUNT, newCount);
+                sessionStorage.setItem(storageName.COUNT, newCount-1);
             }
 
             const t =  JSON.parse("["+sessionStorage.getItem(storageName.CART)+"]");
             //console.log("old cart " + t);
-
+            
             let newCart = t.filter((s) => s.id !== prop.prodotto.id);
+            //console.log("new cart " + JSON.stringify(newCart).replace("[","").replace("]",""));
             const newArray = [];
             newCart.map ((p)=> {
                 newArray.push({
@@ -41,12 +45,13 @@ const ProdottoCart = (prop) => {
            //console.log("new cart " + JSON.stringify(newCart));
            
 
-            console.log("dopo: "+ JSON.stringify(newCart).replace("[",""));
-            sessionStorage.setItem(storageName.CART, JSON.stringify(newArray));
+            //console.log("dopo: "+ JSON.stringify(newCart).replace("[",""));
+            sessionStorage.setItem(storageName.CART, JSON.stringify(newCart).replace("[","").replace("]",""));
             //console.log("typeof: " + typeof storageCart);  
 
         }
 
+        dispatch({ type: counterActions.UPDATE });
     }
 
     return (<div className="container">
