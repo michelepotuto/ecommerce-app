@@ -7,9 +7,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import Footer from "../components/Footer";
 import Prodotti from "../components/Prodotti";
 import ProdottoDettagliato from "../components/ProdottoDettagliato";
-
 //import Cart from './pages/Cart';
-import Carrello from "../pages/Carrello";
+import Carrello from "../components/Carrello";
 import App from "../App";
 
 const Application = () => {

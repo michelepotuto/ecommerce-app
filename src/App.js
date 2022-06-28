@@ -47,24 +47,26 @@ function App() {
     const userData = list.find((user) => user.codiceCliente === input);
     const u = { ...userData };
     if (u.codiceCliente === input) {
+      console.log("loggato")
       setIsLoagged(true);
       setIsShown(false);
     } else {
       alert("codice errato");
     }
   };
-
+  console.log("start")
   return (
     <Fragment>
-      <form onSubmit={handleSubmit}>
+
+      {!isLogged ? <form onSubmit={handleSubmit}>
         {isShown && (
           <div>
             <input onChange={usernameChangeHandler} />
             <button>Login</button>
           </div>
         )}
-        {isLogged && <Application />}
-      </form>
+      </form>: <Application />}
+      
     </Fragment>
   );
 }
