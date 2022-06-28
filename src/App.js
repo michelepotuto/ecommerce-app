@@ -1,7 +1,10 @@
 import "./App.css";
 import { Fragment, useEffect, useState } from "react";
 import Application from "./pages/Application";
-import useFirebase from "./hooks/use-firsebase";
+import useFirebase from "./hooks/use-firebase";
+import { useDispatch } from "react-redux";
+import { counterActions } from "./store/counter-store";
+
 
 function App() {
   const [isShown, setIsShown] = useState(true);

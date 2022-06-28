@@ -5,7 +5,7 @@ import Home from "../components/Home";
 // import Login from "./pages/Login";
 import "bootstrap/dist/css/bootstrap.css";
 import Footer from "../components/Footer";
-import Prodotti from "../pages/Prodotti";
+import Prodotti from "../components/Prodotti";
 import ProdottoDettagliato from "../components/ProdottoDettagliato";
 
 //import Cart from './pages/Cart';
