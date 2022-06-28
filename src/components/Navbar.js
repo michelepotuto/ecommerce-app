@@ -1,22 +1,9 @@
-import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { Dropdown } from "react-bootstrap";
 
 const Navbar = (prop) => {
   const count = useSelector((store) => store.count);
-  const [cartCount, setCartCount] = useState(0);
-  const storageKey2 = "user-cart-count";
 
-  useEffect(() => {
-    if (sessionStorage.getItem(storageKey2)) {
-      setCartCount(parseInt(sessionStorage.getItem(storageKey2)));
-    }
-  }, []);
-
-  const test = () => {
-    console.log("ciao: " + prop.log);
-  };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="navbar-brand">☫ TEAM SHOP</div>
@@ -45,7 +32,7 @@ const Navbar = (prop) => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink onClick={prop.log} className="nav-link" to="/">
+            <NavLink onClick={prop.log} className="nav-link" to="">
               Logout
             </NavLink>
           </li>
