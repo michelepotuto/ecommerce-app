@@ -12,7 +12,7 @@ import Login2 from "./pages/Login2";
 import { useState, useEffect } from "react";
 
 //import Cart from './pages/Cart';
-import Carrello from "./pages/Carrello";
+import Carrello from "./components/Carrello";
 
 
 
