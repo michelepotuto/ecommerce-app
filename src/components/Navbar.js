@@ -24,7 +24,7 @@ const Navbar = (prop) => {
 
         <li className="nav-item">
             <div className="nav-name" to="/">
-              Benvenuto, Michele!
+              Benvenuto, {prop.user}!
             </div>
           </li>
 
