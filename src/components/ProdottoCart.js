@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import { storageName } from "../store/counter-store";
 
 const ProdottoCart = (prop) => {
 
-    const storageKey = "user-cart";
-    const storageKey2 = "user-cart-count";
+
 
     const { nome, categoria, descrizioneB, img, quantita, prezzo } =
         prop.prodotto;
 
     const removeFromCart = (key) => {
-        if (sessionStorage.getItem(storageKey2) ) {
-            //console.log(JSON.parse("[" + sessionStorage.getItem(storageKey) + "]"))
+        if (sessionStorage.getItem(storageName.COUNT) ) {
+            //console.log(JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]"))
             console.log("remove");
-            const newCount = parseInt(sessionStorage.getItem(storageKey2)) - 1;
+            const newCount = parseInt(sessionStorage.getItem(storageName.COUNT)) - 1;
             //console.log("new count " + newCount);
             if(newCount === 0){
-                sessionStorage.setItem(storageKey2, newCount);
-                sessionStorage.removeItem(storageKey);
+                sessionStorage.removeItem(storageName.COUNT);
+                sessionStorage.removeItem(storageName.CART);
             }else{
-                sessionStorage.setItem(storageKey2, newCount);
+                sessionStorage.setItem(storageName.COUNT, newCount);
             }
 
-            const t =  JSON.parse("["+sessionStorage.getItem(storageKey)+"]");
+            const t =  JSON.parse("["+sessionStorage.getItem(storageName.CART)+"]");
             //console.log("old cart " + t);
 
             let newCart = t.filter((s) => s.id !== prop.prodotto.id);
@@ -42,7 +42,7 @@ const ProdottoCart = (prop) => {
            
 
             console.log("dopo: "+ JSON.stringify(newCart).replace("[",""));
-            sessionStorage.setItem(storageKey, JSON.stringify(newArray));
+            sessionStorage.setItem(storageName.CART, JSON.stringify(newArray));
             //console.log("typeof: " + typeof storageCart);  
 
         }

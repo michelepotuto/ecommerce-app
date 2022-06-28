@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import useFirebase from '../hooks/use-firsebase';
+import useFirebase from '../hooks/use-firebase';
 import { useNavigate } from 'react-router';
 
 const Login2 = () => {

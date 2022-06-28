@@ -9,9 +9,8 @@ import Footer from "./components/Footer";
 import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
 import Login2 from "./pages/Login2";
-import { useState, useEffect } from "react";
-
-//import Cart from './pages/Cart';
+import { useDispatch } from "react-redux";
+import { counterActions } from "./store/counter-store";
 import Carrello from "./components/Carrello";
 
 
@@ -19,12 +18,9 @@ import Carrello from "./components/Carrello";
 
 
  function App() {
-//   const [isLogged, setLogged] = useState(false);
 
-//   const HandlerIsLogged = (val) => {
-//     setLogged(val)
-//   }
-
+  const dispatch = useDispatch();
+  dispatch({ type: counterActions.START });
 
   return (
     <Fragment>

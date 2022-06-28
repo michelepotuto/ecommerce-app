@@ -20,7 +20,8 @@ const useFirebase = () => {
     }, []);
 
     return {
-        readFirebase
+        readFirebase,
+        isLoading
     }
 };
 

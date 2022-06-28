@@ -1,13 +1,12 @@
 
 import Button from "./Button";
-import useCart from "../hooks/use-cart";
+import { storageName } from "../store/counter-store";
+
 
 const ProdottoDettagliato = (prop) => {
-  const storageKey = "user-cart";
-  const storageKey2 = "user-cart-count";
-  const storageKey3 = "user-cart-detail";
 
-  const prodottoDettagliato = JSON.parse(sessionStorage.getItem(storageKey3));
+
+  const prodottoDettagliato = JSON.parse(sessionStorage.getItem(storageName.DETAIL));
   
    const { nome, categoria, descrizioneD, img,  prezzo } =
     prodottoDettagliato; 
@@ -16,28 +15,28 @@ const ProdottoDettagliato = (prop) => {
       //console.log("class prodotto: " + product);
   
       console.log("aggiunto al sessionStorage:" + product);
-      if (!sessionStorage.getItem(storageKey2)) {
-  /*       console.log("COUNT " + sessionStorage.getItem(storageKey));
-   */      sessionStorage.setItem(storageKey2, 1);
+      if (!sessionStorage.getItem(storageName.COUNT)) {
+  /*       console.log("COUNT " + sessionStorage.getItem(storageName.CART));
+   */      sessionStorage.setItem(storageName.COUNT, 1);
       } else {
-        const prev = parseInt(sessionStorage.getItem(storageKey2)) + 1;
-        sessionStorage.setItem(storageKey2, prev);
+        const prev = parseInt(sessionStorage.getItem(storageName.COUNT)) + 1;
+        sessionStorage.setItem(storageName.COUNT, prev);
       }
   
-      if (!sessionStorage.getItem(storageKey) || parseInt(sessionStorage.getItem(storageKey)) === 0) {
-        product.id = sessionStorage.getItem(storageKey2);
-        sessionStorage.setItem(storageKey, JSON.stringify(product));
+      if (!sessionStorage.getItem(storageName.CART) || parseInt(sessionStorage.getItem(storageName.CART)) === 0) {
+        product.id = sessionStorage.getItem(storageName.COUNT);
+        sessionStorage.setItem(storageName.CART, JSON.stringify(product));
       } else {
-        product.id = sessionStorage.getItem(storageKey2);
-        const storageCart = [sessionStorage.getItem(storageKey), JSON.stringify(product)];
-        sessionStorage.setItem(storageKey, storageCart);
+        product.id = sessionStorage.getItem(storageName.COUNT);
+        const storageCart = [sessionStorage.getItem(storageName.CART), JSON.stringify(product)];
+        sessionStorage.setItem(storageName.CART, storageCart);
       }
   
   /*     console.log("aggiunto al sessionStorage:" + JSON.stringify(product));
    */  };
 
 
-  const { addToCart } = useCart();
+  
   return (
     <div>
       <div>

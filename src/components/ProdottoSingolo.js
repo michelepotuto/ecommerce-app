@@ -1,31 +1,33 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
+import { storageName } from "../store/counter-store";
+import { useDispatch } from "react-redux";
+import { counterActions } from "../store/counter-store";
 
-
-const Singolo = (prop) => {
-  const storageKey = "user-cart";
-  const storageKey2 = "user-cart-count";
+const ProdottoSingolo = (prop) => {
+  const dispatch = useDispatch();
   //console.log("singolo:" + JSON.stringify(prop.prodotto));
 
   const addToCartHandler = (product) => {
+    dispatch({ type: counterActions.INCREMENT })
     //console.log("class prodotto: " + product);
 
     console.log("aggiunto al sessionStorage:" + product);
-    if (!sessionStorage.getItem(storageKey2)) {
-/*       console.log("COUNT " + sessionStorage.getItem(storageKey));
- */      sessionStorage.setItem(storageKey2, 1);
+    if (!sessionStorage.getItem(storageName.COUNT)) {
+/*       console.log("COUNT " + sessionStorage.getItem(storageName.CART));
+ */      sessionStorage.setItem(storageName.COUNT, 1);
     } else {
-      const prev = parseInt(sessionStorage.getItem(storageKey2)) + 1;
-      sessionStorage.setItem(storageKey2, prev);
+      const prev = parseInt(sessionStorage.getItem(storageName.COUNT)) + 1;
+      sessionStorage.setItem(storageName.COUNT, prev);
     }
 
-    if (!sessionStorage.getItem(storageKey) || parseInt(sessionStorage.getItem(storageKey)) === 0) {
-      product.id = sessionStorage.getItem(storageKey2);
-      sessionStorage.setItem(storageKey, JSON.stringify(product));
+    if (!sessionStorage.getItem(storageName.CART) || parseInt(sessionStorage.getItem(storageName.CART)) === 0) {
+      product.id = sessionStorage.getItem(storageName.COUNT);
+      sessionStorage.setItem(storageName.CART, JSON.stringify(product));
     } else {
-      product.id = sessionStorage.getItem(storageKey2);
-      const storageCart = [sessionStorage.getItem(storageKey), JSON.stringify(product)];
-      sessionStorage.setItem(storageKey, storageCart);
+      product.id = sessionStorage.getItem(storageName.COUNT);
+      const storageCart = [sessionStorage.getItem(storageName.CART), JSON.stringify(product)];
+      sessionStorage.setItem(storageName.CART, storageCart);
     }
 
 /*     console.log("aggiunto al sessionStorage:" + JSON.stringify(product));
@@ -36,8 +38,7 @@ const Singolo = (prop) => {
   console.log(quantita);
 
   const detailHandler = () => {
-    const storageKey3 = "user-cart-detail";
-    sessionStorage.setItem(storageKey3, JSON.stringify(prop.prodotto));
+    sessionStorage.setItem(storageName.DETAIL, JSON.stringify(prop.prodotto));
   }
 
   return (
@@ -81,4 +82,4 @@ const Singolo = (prop) => {
 };
 
 
-export default Singolo;
+export default ProdottoSingolo;
