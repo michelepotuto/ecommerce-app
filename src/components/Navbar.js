@@ -46,18 +46,12 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <Dropdown>
-            <Dropdown.Toggle variant="success">
+          <li className="nav-item">
+          <NavLink to="/carrello">
               Carrello ({cartCount})
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <NavLink to="/carrello">
-                &nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello
               </NavLink>
-              <Dropdown.Item href="#/action-2">Pagamento </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+              </li>
+
         </ul>
       </div>
     </nav>
