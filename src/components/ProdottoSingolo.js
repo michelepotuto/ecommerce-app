@@ -19,15 +19,15 @@ const Singolo = (prop) => {
       localStorage.setItem(storageKey2, prev);
     }
 
-    if (!localStorage.getItem(storageKey)) {
-      product.quantita = localStorage.getItem(storageKey2);
+    if (!localStorage.getItem(storageKey) || parseInt(localStorage.getItem(storageKey)) === 0) {
+      product.id = localStorage.getItem(storageKey2);
       localStorage.setItem(storageKey, JSON.stringify(product));
     } else {
-      product.quantita = localStorage.getItem(storageKey2);
+      product.id = localStorage.getItem(storageKey2);
       const storageCart = [localStorage.getItem(storageKey), JSON.stringify(product)];
       localStorage.setItem(storageKey, storageCart);
     }
-
+    
 /*     console.log("aggiunto al localStorage:" + JSON.stringify(product));
  */  };
 
@@ -39,6 +39,7 @@ const Singolo = (prop) => {
     const storageKey3 = "user-cart-detail";
     localStorage.setItem(storageKey3, JSON.stringify(prop.prodotto));
   }
+
   return (
     <div className="container">
       <div className="card">

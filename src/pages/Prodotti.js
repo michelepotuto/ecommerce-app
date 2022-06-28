@@ -31,7 +31,7 @@ const Prodotti = () => {
     setList(risposta);
   };
 
-
+//console.log("prima lista: "+list);
   return (
     <>
       <Routes>
