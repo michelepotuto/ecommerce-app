@@ -3,7 +3,7 @@ import { createStore } from "redux";
 export const counterActions = {
     INCREMENT: 'INCREMENT',
     DECREMENT: 'DECREMENT',
-    RESET: 'RESET',
+    UPDATE: 'UPDATE',
     START: 'START'
   }
 
@@ -14,23 +14,24 @@ export const counterActions = {
     START: 'START'
   }
 
-const counterReducer = (state = { count:0 }, action) => {
+const counterReducer = (state = { count:0, cartArray: [] }, action) => {
   if(action.type === counterActions.INCREMENT) {
-    //TODO: read from session storage the count instead of "state.count"
     return {
-      count: state.count + 1,
+      ...state,
+      count: parseInt(sessionStorage.getItem(storageName.COUNT)) + 1,
     }
   }
   if(action.type === counterActions.DECREMENT) {
-    //TODO: read from session storage the count instead of "state.count"
     return {
-      count: state.count - 1,
+      ...state,
+      count: parseInt(sessionStorage.getItem(storageName.COUNT)) - 1,
     }
   }
 
-  if(action.type === counterActions.RESET) {
+  if(action.type === counterActions.UPDATE) {
     return {
-      count: state.count = null,
+      count: parseInt(sessionStorage.getItem(storageName.COUNT)),
+      cartArray: JSON.parse("["+sessionStorage.getItem(storageName.CART)+"]"),
     }
   }
   if(action.type === counterActions.START) {
@@ -38,6 +39,7 @@ const counterReducer = (state = { count:0 }, action) => {
         sessionStorage.setItem(storageName.COUNT, 0);
       }
     return {
+      ...state,
       count: state.count = parseInt(sessionStorage.getItem(storageName.COUNT)),
     }
   }
