@@ -13,24 +13,14 @@ import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
 //import Cart from './pages/Cart';
 import Carrello from "./components/Carrello";
-<<<<<<< HEAD
-import Logout from "./components/Logout";
-
-// 
-=======
->>>>>>> 0428059da36003c431d487201ccbd94642f1f335
 
 function App() {
   const navigate = useNavigate();
   const token = "token-user";
   const [isShown, setIsShown] = useState(true);
-<<<<<<< HEAD
-  const [isLogged, setIsLogged] = useState(JSON.parse(sessionStorage.getItem(token)) || false);
-=======
   const [isLogged, setIsLogged] = useState(
     JSON.parse(sessionStorage.getItem(token)) || false
   );
->>>>>>> 0428059da36003c431d487201ccbd94642f1f335
   const [input, setInput] = useState("");
   const [list, setList] = useState({});
   const firebaseURLProduct =
