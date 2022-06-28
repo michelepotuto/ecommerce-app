@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import ProdottoCart from './ProdottoCart';
-
-
+import { storageName } from "../store/counter-store";
+import { Link } from "react-router-dom";
 
 const Carrello = () => {
   const [length, setLength] = useState(0);
   const [storageCart, setStorageCart] = useState([]);
-  const storageKey = "user-cart";
-  const storageKey2 = "user-cart-count";
+
 
 
   useEffect(() => {
-    if (sessionStorage.getItem(storageKey2)) {
-      //console.log(JSON.parse("[" + sessionStorage.getItem(storageKey) + "]")) ;
-      setLength(parseInt(sessionStorage.getItem(storageKey2)));
-      const t = JSON.parse("[" + sessionStorage.getItem(storageKey) + "]");
+    if (sessionStorage.getItem(storageName.COUNT)) {
+      //console.log(JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]")) ;
+      setLength(parseInt(sessionStorage.getItem(storageName.COUNT)));
+      const t = JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]");
       setStorageCart(t);
       /*console.log("typeof: " + typeof storageCart);*/
     }
@@ -22,7 +21,8 @@ const Carrello = () => {
 
   return (
     <>
-      {length === 0 ? <h1>Carrello vuoto</h1> :
+      {length === 0 ? <div><h1 className='text-center'>Carrello vuoto</h1> <div><h2 className='text-center'><Link className="nav-link border border-1" to="/prodotti">
+        Inizia la tua spesa</Link></h2></div></div> :
         storageCart.map((prodotto, key) => (
           <ProdottoCart key={key} prodotto={prodotto} />
         ))

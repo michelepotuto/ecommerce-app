@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import Singolo from './ProdottoSingolo';
+import ProdottoSingolo from './ProdottoSingolo';
 import { Routes } from 'react-router-dom';
-import useFirebase from '../hooks/use-firsebase';
+import useFirebase from "../hooks/use-firebase";
 
 const Prodotti = () => {
   const [list, setList] = React.useState([]);
   const firebaseURLProduct = "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/product.json"
-  const { readFirebase } = useFirebase();
+  const { readFirebase, isLoading } = useFirebase();
   
   useEffect(() => {
     updateProductsFetch();
@@ -36,9 +36,10 @@ const Prodotti = () => {
     <>
       <Routes>
       </Routes>
-      {list.map((prodotto, key) => (
-        <Singolo prodotto={prodotto} key={key} />
-      ))}
+
+      {isLoading ? list.map((prodotto, key) => (
+        <ProdottoSingolo prodotto={prodotto} key={key} />
+      )) : <h1 className='text-center'>CARICAMENTO PRODOTTI...</h1>}
     </>
   )
 }
