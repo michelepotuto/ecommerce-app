@@ -28,11 +28,7 @@ const Navbar = (prop) => {
             </div>
           </li>
 
-        <li className="nav-item">
-            <NavLink className="nav-link" to="/">
-              Logout
-            </NavLink>
-          </li>
+       
 
           <li className="nav-item active">
             <NavLink className="nav-link" to="/home">
