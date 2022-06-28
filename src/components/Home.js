@@ -8,38 +8,43 @@ const Home = () => (
   <div className="h1"> <hr></hr> ⮊ BENVENUTO IN TEAM SHOP! ⮈<hr></hr>
 <Carousel>
   <Carousel.Item>
+    <div className="container">
     <img
-      className="d-block w-100"
+      className="img_carosello2 d-block w-600"
       src={logo1}
       alt="First slide"
     />
+    </div>
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      
+      <p>10% di sconto sul primo acquisto</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
+  <div className="container">
     <img
-      className="d-block w-100"
+      className="img_carosello d-block w-100"
       src={logo2}
       alt="Second slide"
     />
-
+</div>
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+     
+      <p>10% di sconto sui gaming laptop</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
+  <div className="container">
     <img
-      className="d-block w-100"
+      className="img_carosello d-block w-100"
       src={logo3}
       alt="Third slide"
     />
+    </div>
 
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+
+      <p>15% di sconto sul tuo primo iPhone acquistato</p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

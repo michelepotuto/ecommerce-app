@@ -6,6 +6,14 @@
 
 }
 
+.nav-name {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #eaeaea;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
 .inizia_spesa {
   font-size: 24px;
 }
@@ -250,3 +258,17 @@ a:-webkit-any-link {
 
 
 /*FINE CARD CSS*/
+
+
+.img_carosello {
+  
+  width: 900px;
+}
+
+.img_carosello2 {
+  
+  width: 100%;
+}
+
+
+

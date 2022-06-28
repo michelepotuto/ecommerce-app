@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (prop) => {
   const count = useSelector((store) => store.count);
 
   return (
@@ -22,18 +21,32 @@ const Navbar = () => {
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
+
+        <li className="nav-item">
+            <div className="nav-name" to="/">
+              Benvenuto, Michele!
+            </div>
+          </li>
+
+        <li className="nav-item">
+            <NavLink className="nav-link" to="/">
+              Logout
+            </NavLink>
+          </li>
+
           <li className="nav-item active">
             <NavLink className="nav-link" to="/home">
               Home
             </NavLink>
           </li>
+
           <li className="nav-item">
             <NavLink className="nav-link" to="/prodotti">
               Prodotti
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/">
+            <NavLink onClick={prop.log} className="nav-link" to="">
               Logout
             </NavLink>
           </li>
