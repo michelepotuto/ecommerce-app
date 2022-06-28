@@ -54,6 +54,7 @@ function App() {
     if (u.codiceCliente === input) {
       setIsLoagged(true);
       setIsShown(false);
+      navigate("/home");
     } else {
       alert("codice errato");
     }
@@ -70,7 +71,7 @@ function App() {
         )}
       </form>
       {isLogged && (
-        <>
+        <div>
           <Navbar />
           <Routes>
             <Route path="/home" element={<Home />} />
@@ -80,7 +81,7 @@ function App() {
             <Route path="/carrello" element={<Carrello />} />
           </Routes>
           <Footer />
-        </>
+        </div>
       )}
     </Fragment>
   );
