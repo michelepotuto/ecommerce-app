@@ -6,7 +6,9 @@
 
 }
 
-
+.inizia_spesa {
+  font-size: 24px;
+}
 
 .navbar-expand-lg .navbar-collapse {
   display: flex;
