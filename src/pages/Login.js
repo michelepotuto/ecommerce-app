@@ -1,79 +1,98 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useFirebase from '../hooks/use-firsebase';
+import { useNavigate } from 'react-router';
 
 const storageKey = 'is-submitted';
 
+
 function Login() {
-    // React States + sessionStorage (login persistente)
-    const [errorMessages, setErrorMessages] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(JSON.parse(sessionStorage.getItem(storageKey)) || false);
-      // const [user, setUser] = useState();
+    // React States + localStorage (login persistente)
+    const [input, setInput] = useState('');
+    const [list, setList] = useState({});
+    // const [isSubmitted, setIsSubmitted] = useState(JSON.parse(localStorage.getItem(storageKey)) || false);
+    const firebaseURLProduct = "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/credentials.json"
+    const { readFirebase } = useFirebase();
+    const navigate = useNavigate();
+    // const [user, setUser] = useState();
+
+    useEffect(() => {
+      updateProductsFetch();
+    }, []);
+
+    const updateProductsFetch = async () => {
+      const answer = await readFirebase(firebaseURLProduct);
+      const risposta = [];
+      for (const p in answer) {
+        risposta.push({
+          nome: answer[p].nome,
+          cognome: answer[p].cognome,
+          username: answer[p].username,
+          codiceCliente: answer[p].codiceCliente,
+        })
+      }
+      setList(risposta);
+    };
   
     // User Login info
-    const database = [
-      {
-        username: "user1",
-        password: "pass1"
-      },
-      {
-        username: "user2",
-        password: "pass2"
-      }
-    ];
+    const database = readFirebase(firebaseURLProduct);
   
-    const errors = {
-      uname: "invalid username",
-      pass: "invalid client code"
-    };
-  
-    const handleSubmit = (event) => {
-      // local storage per login persistente
+    // const errors = {
+    //   uname: "invalid username",
+    //   pass: "invalid client code"
+    // };
 
-      //Prevent page reload
+    
+    const handleSubmit = (event) => {
+
       event.preventDefault();
+
+      const usernameChangeHandler = (e) => {
+        const value = e.target.value;
+        setInput(value)
+
+      }
   
-      var { uname, pass } = document.forms[0];
-  
-      // Find user login info
-      const userData = database.find((user) => user.username === uname.value);
+      const userData = list.filter((user) => user.codiceCliente === input);
+
+      if (userData.lenght > 0) {
+          navigate('/home');
+      };
   
       // Compare user info
-      if (userData) {
-        if (userData.password !== pass.value) {
-          // Invalid password
-          setErrorMessages({ name: "pass", message: errors.pass });
-        } else {
-          setIsSubmitted(true);
-          sessionStorage.setItem(storageKey, JSON.stringify(!isSubmitted));
+    //   if (userData) {
+    //     if (userData.password !== pass.value) {
+    //       // Invalid password
+    //       setErrorMessages({ name: "pass", message: errors.pass });
+    //     } else {
+    //       setIsSubmitted(true);
+    //       localStorage.setItem(storageKey, JSON.stringify(!isSubmitted));
 
-        }
-      } else {
-        // Username not found
-        setErrorMessages({ name: "uname", message: errors.uname });
-      }
+    //     }
+    //   } else {
+    //     // Username not found
+    //     setErrorMessages({ name: "uname", message: errors.uname });
+    //   }
 
 
-    };
+    // };
   
-    // Generate JSX code for error message
-    const renderErrorMessage = (name) =>
-      name === errorMessages.name && (
-        <div className="error">{errorMessages.message}</div>
-      );
+    // // Generate JSX code for error message
+    // const renderErrorMessage = (name) =>
+    //   name === errorMessages.name && (
+    //     <div className="error">{errorMessages.message}</div>
+    //   );
   
     // JSX code for login form
     const renderForm = (
       <div className="form">
-        <form onSubmit={handleSubmit}>
-          <div className="input-container">
-            <label>Username </label>
-            <input type="text" name="uname" required />
-            {renderErrorMessage("uname")}
-          </div>
+        <form onSubmit={handleSubmit}
+        >
           <div className="input-container">
             <label>Codice cliente </label>
-            <input type="password" name="pass" required />
-            {renderErrorMessage("pass")}
+           <input type="password" 
+            onChange={usernameChangeHandler}
+            name="pass" required  />
           </div>
           <div className="button-container">
             <input type="submit" />
@@ -83,19 +102,21 @@ function Login() {
     );
 
 
-    const logout = () => {
-      setIsSubmitted('');
-      sessionStorage.removeItem(storageKey);
+    // const logout = () => {
+    //   setIsSubmitted('');
+    //    localStorage.removeItem(storageKey);
+    // }
+
+    // {isSubmitted ? <div className='button_logout'>Sei loggato nel tuo account! ⇢ <button onClick={logout}>Logout</button></div>  : renderForm}
     }
-  
     return (
       <div className="app">
         <div className="login-form">
-          {isSubmitted ? <div className='button_logout'>Sei loggato nel tuo account! ⇢ <button onClick={logout}>Logout</button></div>  : renderForm}
+          {renderForm}
         </div>
       </div>
       
     );
   }
 
-export default Login
+export default Login;
