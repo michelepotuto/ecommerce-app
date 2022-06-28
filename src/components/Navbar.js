@@ -48,12 +48,10 @@ const Navbar = () => {
           </li>
 
           <li className="nav-item">
-          <NavLink className="nav-link" to="/carrello">
+            <NavLink className="nav-link" to="/carrello">
               Carrello ({count})
-              </NavLink>
-              </li>
-
-
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
