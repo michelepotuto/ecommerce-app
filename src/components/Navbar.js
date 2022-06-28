@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import {  useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { Dropdown } from 'react-bootstrap';
-
+import { Dropdown } from "react-bootstrap";
 
 const Navbar = () => {
   const count = useSelector((store) => store.count);
@@ -17,9 +16,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="navbar-brand">
-        ☫ TEAM SHOP
-      </div>
+      <div className="navbar-brand">☫ TEAM SHOP</div>
       <button
         className="navbar-toggler"
         type="button"
@@ -45,29 +42,27 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/login">
-              Login
+            <NavLink className="nav-link" to="/">
+              Logout
             </NavLink>
           </li>
 
-
-
-          <li className="nav-item">
-          <NavLink className="nav-link" to="/carrello">
-
+          <Dropdown>
+            <Dropdown.Toggle variant="success">
               Carrello ({count})
+            </Dropdown.Toggle>
 
+            <Dropdown.Menu>
+              <NavLink to="/carrello">
+                &nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello
               </NavLink>
-              </li>
-
-
-
+              <Dropdown.Item href="#/action-2">Pagamento </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </ul>
-
       </div>
     </nav>
   );
 };
 
-
-export default Navbar
+export default Navbar;
