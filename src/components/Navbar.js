@@ -28,8 +28,8 @@ const Navbar = (prop) => {
             </div>
           </li>
 
-        <li className="nav-item">
-            <NavLink className="nav-link" to="/">
+          <li className="nav-item">
+            <NavLink onClick={prop.log} className="nav-link" to="">
               Logout
             </NavLink>
           </li>
@@ -45,11 +45,7 @@ const Navbar = (prop) => {
               Prodotti
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink onClick={prop.log} className="nav-link" to="">
-              Logout
-            </NavLink>
-          </li>
+
 
           <li className="nav-item">
             <NavLink className="nav-link" to="/carrello">

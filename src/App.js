@@ -53,10 +53,6 @@ function App() {
     setInput(value);
   };
 
-  const logoutFunction = () => {
-    sessionStorage.removeItem(token);
-    setIsLogged(false);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
