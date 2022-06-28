@@ -17,6 +17,7 @@ import Carrello from "./components/Carrello";
 function App() {
   const navigate = useNavigate();
   const token = "token-user";
+  const [user, setUser] = useState("");
   const [isShown, setIsShown] = useState(true);
   const [isLogged, setIsLogged] = useState(
     JSON.parse(sessionStorage.getItem(token)) || false
@@ -56,8 +57,8 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const userData = list.find((user) => user.codiceCliente === input);
+    setUser(userData.nome);
     const u = { ...userData };
     if (u.codiceCliente === input) {
       sessionStorage.setItem(token, JSON.stringify(userData));
@@ -93,7 +94,7 @@ function App() {
         </form>
       ) : (
         <div>
-          <Navbar log={logFunc} />
+          <Navbar log={logFunc} user={user} />
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/prodotti" element={<Prodotti />} />

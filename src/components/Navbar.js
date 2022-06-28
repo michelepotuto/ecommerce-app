@@ -24,11 +24,11 @@ const Navbar = (prop) => {
 
         <li className="nav-item">
             <div className="nav-name" to="/">
-              Benvenuto, Michele!
+              Benvenuto, {prop.user}!
             </div>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item active">
             <NavLink onClick={prop.log} className="nav-link" to="">
               Logout
             </NavLink>
