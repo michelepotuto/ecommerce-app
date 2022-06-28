@@ -10,36 +10,35 @@ const Singolo = (prop) => {
   const addToCartHandler = (product) => {
     //console.log("class prodotto: " + product);
 
-    console.log("aggiunto al sessionStorage:" + product);
-    if (!sessionStorage.getItem(storageKey2)) {
-/*       console.log("COUNT " + sessionStorage.getItem(storageKey));
- */      sessionStorage.setItem(storageKey2, 1);
+    console.log("aggiunto al localStorage:" + product);
+    if (!localStorage.getItem(storageKey2)) {
+/*       console.log("COUNT " + localStorage.getItem(storageKey));
+ */      localStorage.setItem(storageKey2, 1);
     } else {
-      const prev = parseInt(sessionStorage.getItem(storageKey2)) + 1;
-      sessionStorage.setItem(storageKey2, prev);
+      const prev = parseInt(localStorage.getItem(storageKey2)) + 1;
+      localStorage.setItem(storageKey2, prev);
     }
 
-    if (!sessionStorage.getItem(storageKey) || parseInt(sessionStorage.getItem(storageKey)) === 0) {
-      product.id = sessionStorage.getItem(storageKey2);
-      sessionStorage.setItem(storageKey, JSON.stringify(product));
+    if (!localStorage.getItem(storageKey)) {
+      product.quantita = localStorage.getItem(storageKey2);
+      localStorage.setItem(storageKey, JSON.stringify(product));
     } else {
-      product.id = sessionStorage.getItem(storageKey2);
-      const storageCart = [sessionStorage.getItem(storageKey), JSON.stringify(product)];
-      sessionStorage.setItem(storageKey, storageCart);
+      product.quantita = localStorage.getItem(storageKey2);
+      const storageCart = [localStorage.getItem(storageKey), JSON.stringify(product)];
+      localStorage.setItem(storageKey, storageCart);
     }
 
-/*     console.log("aggiunto al sessionStorage:" + JSON.stringify(product));
+/*     console.log("aggiunto al localStorage:" + JSON.stringify(product));
  */  };
 
-  const { nome, categoria, descrizioneB, img, quantita, prezzo } =
+  const {  nome, categoria, descrizioneB,  img, quantita, prezzo } =
     prop.prodotto;
-  console.log(quantita);
+    console.log(quantita);
 
   const detailHandler = () => {
     const storageKey3 = "user-cart-detail";
-    sessionStorage.setItem(storageKey3, JSON.stringify(prop.prodotto));
+    localStorage.setItem(storageKey3, JSON.stringify(prop.prodotto));
   }
-
   return (
     <div className="container">
       <div className="card">
@@ -58,27 +57,28 @@ const Singolo = (prop) => {
             </div>
           </div>
           <div className="col"><Button
-            
             onClick={() => {
+              //addToCart(prop.prodotto);
               addToCartHandler(prop.prodotto);//new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo)
               console.log("Singolo add : " + prop.prodotto);
+              /*  addToCart(prop.prodotto); */
             }}
           >
             Add to cart
           </Button>
           </div>
-
+          
         </div>
         <div className="col">
-          <div className="card_text-end">
-            <Link to="/dettaglio" onClick={detailHandler}>Vai ai dettagli ⇢</Link>
-          </div>
+            <div className="card_text-end">
+              <Link to="/dettaglio" onClick={detailHandler}>Vai ai dettagli ⇢</Link>
+            </div>
         </div>
 
       </div>
     </div>
   );
-};
+} ;
 
 
 export default Singolo;

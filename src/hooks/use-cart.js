@@ -13,7 +13,7 @@ const useCart = () => {
   const dispatch = useDispatch();
   
   const addToCart = (phone) => {
-    setStorageCount(parseInt(sessionStorage.getItem("use-cart-count")));
+    setStorageCount(parseInt(localStorage.getItem("use-cart-count")));
     console.log("add" + storageCount);
     dispatch({ type: cartActions.ADD, phone });
   }

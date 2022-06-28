@@ -108,7 +108,7 @@ function Login() {
     // }
 
     // {isSubmitted ? <div className='button_logout'>Sei loggato nel tuo account! ⇢ <button onClick={logout}>Logout</button></div>  : renderForm}
-    }
+  
     return (
       <div className="app">
         <div className="login-form">
@@ -117,6 +117,6 @@ function Login() {
       </div>
       
     );
-  }
+  }}
 
-export default Login;
+export default Login

@@ -27,22 +27,22 @@ export const AuthContextProvider = (props) => {
     setIsLoggedIn(true);
     setLoggedUser(username);
     setShowLoginDialog(true);
-    sessionStorage.setItem(storageKey, username);
+    localStorage.setItem(storageKey, username);
   };
 
   const logoutHandler = () => {
     setIsLoggedIn(false);
     setLoggedUser("");
     setShowLogoutDialog(true);
-    sessionStorage.removeItem(storageKey);
+    localStorage.removeItem(storageKey);
   };
 
   useEffect(() => {
-    const storageUser = sessionStorage.getItem(storageKey);
+    const storageUser = localStorage.getItem(storageKey);
     if (storageUser) {
       setIsLoggedIn(true);
       setLoggedUser(storageUser);
-      sessionStorage.setItem(storageKey, storageUser);
+      localStorage.setItem(storageKey, storageUser);
     }
   }, []);
 
