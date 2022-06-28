@@ -1,12 +1,21 @@
 import "./App.css";
 import { Fragment, useEffect, useState } from "react";
-import Application from "./pages/Application";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import useFirebase from "./hooks/use-firebase";
 import { useDispatch } from "react-redux";
 import { counterActions } from "./store/counter-store";
-
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+// import Login from "./pages/Login";
+import "bootstrap/dist/css/bootstrap.css";
+import Footer from "./components/Footer";
+import Prodotti from "./components/Prodotti";
+import ProdottoDettagliato from "./components/ProdottoDettagliato";
+//import Cart from './pages/Cart';
+import Carrello from "./components/Carrello";
 
 function App() {
+  const navigate = useNavigate();
   const [isShown, setIsShown] = useState(true);
   const [isLogged, setIsLoagged] = useState(false);
   const [input, setInput] = useState("");
@@ -21,7 +30,7 @@ function App() {
 
   const dispatch = useDispatch();
   dispatch({ type: counterActions.START });
-  
+
   const updateProductsFetch = async () => {
     const answer = await readFirebase(firebaseURLProduct);
     const risposta = [];
@@ -47,26 +56,38 @@ function App() {
     const userData = list.find((user) => user.codiceCliente === input);
     const u = { ...userData };
     if (u.codiceCliente === input) {
-      console.log("loggato")
       setIsLoagged(true);
       setIsShown(false);
+      navigate("/home");
     } else {
       alert("codice errato");
     }
   };
-  console.log("start")
+
   return (
     <Fragment>
-
-      {!isLogged ? <form onSubmit={handleSubmit}>
-        {isShown && (
-          <div>
-            <input onChange={usernameChangeHandler} />
-            <button>Login</button>
-          </div>
-        )}
-      </form>: <Application />}
-      
+      {!isLogged ? (
+        <form onSubmit={handleSubmit}>
+          {isShown && (
+            <div>
+              <input onChange={usernameChangeHandler} />
+              <button>Login</button>
+            </div>
+          )}
+        </form>
+      ) : (
+        <div>
+          <Navbar />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/prodotti" element={<Prodotti />} />
+            <Route path="/" element={<App />} />
+            <Route path="/dettaglio" element={<ProdottoDettagliato />} />
+            <Route path="/carrello" element={<Carrello />} />
+          </Routes>
+          <Footer />
+        </div>
+      )}
     </Fragment>
   );
 }
