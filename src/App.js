@@ -13,6 +13,7 @@ import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
 //import Cart from './pages/Cart';
 import Carrello from "./components/Carrello";
+import Logout from "./components/Logout";
 
 function App() {
   const navigate = useNavigate();
@@ -81,9 +82,9 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/prodotti" element={<Prodotti />} />
-            <Route path="/" element={<App />} />
             <Route path="/dettaglio" element={<ProdottoDettagliato />} />
             <Route path="/carrello" element={<Carrello />} />
+            <Route path="/" element={<Logout />} />
           </Routes>
           <Footer />
         </div>
