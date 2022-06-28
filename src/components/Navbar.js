@@ -41,11 +41,7 @@ const Navbar = (prop) => {
               Prodotti
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink onClick={prop.log} className="nav-link" to="">
-              Logout
-            </NavLink>
-          </li>
+
 
           <li className="nav-item">
             <NavLink className="nav-link" to="/carrello">
