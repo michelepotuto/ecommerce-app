@@ -53,7 +53,7 @@ const Navbar = () => {
 
 
           <li className="nav-item">
-          <NavLink to="/carrello">
+          <NavLink className="nav-link" to="/carrello">
 
               Carrello ({count})
 
