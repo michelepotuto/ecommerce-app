@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Singolo from '../components/ProdottoSingolo';
+import ProdottoCart from '../components/ProdottoCart';
 
 
 
@@ -11,6 +11,7 @@ const Carrello = () => {
 
 
   useEffect(() => {
+<<<<<<< HEAD
         if (localStorage.getItem(storageKey)) {
           const t = localStorage.getItem(storageKey);
           const v = [storageCart,t];
@@ -19,16 +20,16 @@ const Carrello = () => {
       }else{
         
       } 
+=======
+>>>>>>> 310ada55e29d946957cc8c8ebf83eb2d01e11d46
     if (localStorage.getItem(storageKey2)) {
-      console.log(JSON.parse("[" + localStorage.getItem(storageKey) + "]"))
+      //console.log(JSON.parse("[" + localStorage.getItem(storageKey) + "]")) ;
       setLength(parseInt(localStorage.getItem(storageKey2)));
       const t = JSON.parse("[" + localStorage.getItem(storageKey) + "]");
-      /*       const json = JSON.parse(t);*/
       setStorageCart(t);
-
-      console.log("typeof: " + typeof storageCart);
-
+      /*console.log("typeof: " + typeof storageCart);*/
     }
+<<<<<<< HEAD
   }, [length]);
 
   
@@ -36,12 +37,19 @@ const Carrello = () => {
 //    let temp  = Carrello.filter(item => item.id !== productId);
 //    localStorage.setItem("Carello", JSON.stringify(temp));
 //  }
+=======
+  }, []);
+
+
+
+>>>>>>> 310ada55e29d946957cc8c8ebf83eb2d01e11d46
 
   return (
     <>
 
       {length === 0 ? <h1>Carrello vuoto</h1> :
         storageCart.map((prodotto, key) => (
+<<<<<<< HEAD
 
           <div className="container">
             <div className="card">
@@ -66,14 +74,11 @@ const Carrello = () => {
               </div>
             </div>
           </div>))
+=======
+          <ProdottoCart key={key} prodotto={prodotto} />
+        ))
+>>>>>>> 310ada55e29d946957cc8c8ebf83eb2d01e11d46
       }
-
-      {/*  { !length && storageCart.map( (prodotto) => (
-        <Singolo prodotto={prodotto} key={prodotto.id} /> )) */}
-
-      {/*   .map((prodotto) => (
-        <Singolo prodotto={prodotto} key={prodotto.id} /> ))
-      }  */}
     </>
   )
 }

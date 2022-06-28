@@ -11,8 +11,17 @@ const useFirebase = () => {
             const response = await fetch(url, config);
             const data = await response.json();
             setIsLoading(true);
+            return (data);
         } catch (e) {
+            setHasError(true);
+            console.error(e);
         }
+        setIsLoading(false);
     }, []);
-    
-}
+
+    return {
+        readFirebase
+    }
+};
+
+export default useFirebase;
