@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Singolo from '../components/ProdottoSingolo';
 
 
+
 const Carrello = () => {
   const [length, setLength] = useState(0);
   const [storageCart, setStorageCart] = useState([]);
@@ -10,14 +11,14 @@ const Carrello = () => {
 
 
   useEffect(() => {
-    /*     if (localStorage.getItem(storageKey)) {
+        if (localStorage.getItem(storageKey)) {
           const t = localStorage.getItem(storageKey);
           const v = [storageCart,t];
-    /*        console.log("qualcosa : " + v); //JSON.parse(JSON.stringify(t))
-     */     /*  setStorageCart(v);
+            console.log("qualcosa : " + v); JSON.parse(JSON.stringify(t))
+      setStorageCart(v);
       }else{
         
-      } */
+      } 
     if (localStorage.getItem(storageKey2)) {
       console.log(JSON.parse("[" + localStorage.getItem(storageKey) + "]"))
       setLength(parseInt(localStorage.getItem(storageKey2)));
@@ -30,9 +31,11 @@ const Carrello = () => {
     }
   }, [length]);
 
-
-
-
+  
+//  function removeItemFromCart(productId){
+//    let temp  = Carrello.filter(item => item.id !== productId);
+//    localStorage.setItem("Carello", JSON.stringify(temp));
+//  }
 
   return (
     <>
@@ -55,7 +58,8 @@ const Carrello = () => {
                     <p className="Prezzo">{prodotto.prezzo} € </p>
                   </div>
                 </div>
-                <div className="col"><button>
+           
+                <div className="col"><button >
                   REMOVE         
                    </button>
                 </div>
