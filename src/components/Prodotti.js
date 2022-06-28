@@ -15,6 +15,7 @@ const Prodotti = () => {
 
   const updateProductsFetch = async () => {
     const answer = await readFirebase(firebaseURLProduct);
+    //console.log("prodotti: " +  answer);
     const risposta = [];
     for (const p in answer) {
       risposta.push({
