@@ -52,19 +52,13 @@ const Navbar = () => {
 
 
 
-          <Dropdown>
-            <Dropdown.Toggle variant="success">
+          <li className="nav-item">
+          <NavLink className="nav-link" to="/carrello">
 
               Carrello ({count})
 
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <NavLink to="/carrello">&nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello</NavLink>
-              <Dropdown.Item href="#/action-2">Pagamento </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
+              </NavLink>
+              </li>
 
 
 

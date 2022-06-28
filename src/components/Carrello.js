@@ -24,8 +24,8 @@ const Carrello = () => {
       {length === 0 ? <div><h1 className='text-center'>Carrello vuoto</h1><div class="row align-items-center">
     
     <div class="col">
-      <h2 className='text-center'><Link className="nav-link border border-1" to="/prodotti">
-        Inizia la tua spesa</Link></h2></div>
+      <h2 className='text-center'><button className="inizia_spesa border border-1" to="/prodotti">
+        <Link to='/prodotti'>Inizia la tua spesa</Link></button></h2></div>
     </div>
     
   </div> :
