@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import {  useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Dropdown } from 'react-bootstrap';
-
+import { Dropdown } from "react-bootstrap";
 
 const Navbar = () => {
-  const count = useSelector((store) => store.count);
   const [cartCount, setCartCount] = useState(0);
   const storageKey2 = "user-cart-count";
 
   useEffect(() => {
-    if (sessionStorage.getItem(storageKey2)) {
-      setCartCount(parseInt(sessionStorage.getItem(storageKey2)));
+    if (localStorage.getItem(storageKey2)) {
+      setCartCount(parseInt(localStorage.getItem(storageKey2)));
     }
   }, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="navbar-brand">
-        ☫ TEAM SHOP
-      </div>
+      <div className="navbar-brand">☫ TEAM SHOP</div>
       <button
         className="navbar-toggler"
         type="button"
@@ -35,7 +30,7 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link" to="/home">
               Home
             </NavLink>
           </li>
@@ -45,35 +40,27 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/login">
-              Login
+            <NavLink className="nav-link" to="/home">
+              Logout
             </NavLink>
           </li>
 
-
-
           <Dropdown>
             <Dropdown.Toggle variant="success">
-
-              Carrello ({count})
-
+              Carrello ({cartCount})
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <NavLink to="/carrello">&nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello</NavLink>
+              <NavLink to="/carrello">
+                &nbsp;&nbsp;&nbsp;&nbsp;Vai al carrello
+              </NavLink>
               <Dropdown.Item href="#/action-2">Pagamento </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-
-
-
-
         </ul>
-
       </div>
     </nav>
   );
 };
 
-
-export default Navbar
+export default Navbar;

@@ -1,42 +1,14 @@
 
 import Button from "./Button";
-import { storageName } from "../store/counter-store";
-
+import useCart from "../hooks/use-cart";
 
 const ProdottoDettagliato = (prop) => {
-
-
-  const prodottoDettagliato = JSON.parse(sessionStorage.getItem(storageName.DETAIL));
+  const storageKey3 = "user-cart-detail";
+  const prodottoDettagliato = JSON.parse(localStorage.getItem(storageKey3));
   
    const { nome, categoria, descrizioneD, img,  prezzo } =
     prodottoDettagliato; 
-
-    const addToCartHandler = (product) => {
-      //console.log("class prodotto: " + product);
-  
-      console.log("aggiunto al sessionStorage:" + product);
-      if (!sessionStorage.getItem(storageName.COUNT)) {
-  /*       console.log("COUNT " + sessionStorage.getItem(storageName.CART));
-   */      sessionStorage.setItem(storageName.COUNT, 1);
-      } else {
-        const prev = parseInt(sessionStorage.getItem(storageName.COUNT)) + 1;
-        sessionStorage.setItem(storageName.COUNT, prev);
-      }
-  
-      if (!sessionStorage.getItem(storageName.CART) || parseInt(sessionStorage.getItem(storageName.CART)) === 0) {
-        product.id = sessionStorage.getItem(storageName.COUNT);
-        sessionStorage.setItem(storageName.CART, JSON.stringify(product));
-      } else {
-        product.id = sessionStorage.getItem(storageName.COUNT);
-        const storageCart = [sessionStorage.getItem(storageName.CART), JSON.stringify(product)];
-        sessionStorage.setItem(storageName.CART, storageCart);
-      }
-  
-  /*     console.log("aggiunto al sessionStorage:" + JSON.stringify(product));
-   */  };
-
-
-  
+  const { addToCart } = useCart();
   return (
     <div>
       <div>
@@ -54,7 +26,7 @@ const ProdottoDettagliato = (prop) => {
                 <p className="Prezzo">{prezzo}</p>
                 <Button
                   onClick={() => {
-                    addToCartHandler(prodottoDettagliato);
+                    addToCart(prop.prodotto);
                   }}
                 >
                   Add to cart
