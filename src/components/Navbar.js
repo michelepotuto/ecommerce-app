@@ -9,8 +9,8 @@ const Navbar = () => {
   const storageKey2 = "user-cart-count";
 
   useEffect(() => {
-    if (localStorage.getItem(storageKey2)) {
-      setCartCount(parseInt(localStorage.getItem(storageKey2)));
+    if (sessionStorage.getItem(storageKey2)) {
+      setCartCount(parseInt(sessionStorage.getItem(storageKey2)));
     }
   }, []);
 

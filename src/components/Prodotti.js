@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Singolo from '../components/ProdottoSingolo';
+import Singolo from './ProdottoSingolo';
 import { Routes } from 'react-router-dom';
 import useFirebase from '../hooks/use-firsebase';
 

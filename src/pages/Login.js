@@ -4,9 +4,9 @@ import { useState } from "react";
 const storageKey = 'is-submitted';
 
 function Login() {
-    // React States + localStorage (login persistente)
+    // React States + sessionStorage (login persistente)
     const [errorMessages, setErrorMessages] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(JSON.parse(localStorage.getItem(storageKey)) || false);
+    const [isSubmitted, setIsSubmitted] = useState(JSON.parse(sessionStorage.getItem(storageKey)) || false);
       // const [user, setUser] = useState();
   
     // User Login info
@@ -44,7 +44,7 @@ function Login() {
           setErrorMessages({ name: "pass", message: errors.pass });
         } else {
           setIsSubmitted(true);
-          localStorage.setItem(storageKey, JSON.stringify(!isSubmitted));
+          sessionStorage.setItem(storageKey, JSON.stringify(!isSubmitted));
 
         }
       } else {
@@ -85,7 +85,7 @@ function Login() {
 
     const logout = () => {
       setIsSubmitted('');
-       localStorage.removeItem(storageKey);
+      sessionStorage.removeItem(storageKey);
     }
   
     return (

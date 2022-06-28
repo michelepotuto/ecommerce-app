@@ -9,19 +9,19 @@ const ProdottoCart = (prop) => {
         prop.prodotto;
 
     const removeFromCart = (key) => {
-        if (localStorage.getItem(storageKey2) ) {
-            //console.log(JSON.parse("[" + localStorage.getItem(storageKey) + "]"))
+        if (sessionStorage.getItem(storageKey2) ) {
+            //console.log(JSON.parse("[" + sessionStorage.getItem(storageKey) + "]"))
             console.log("remove");
-            const newCount = parseInt(localStorage.getItem(storageKey2)) - 1;
+            const newCount = parseInt(sessionStorage.getItem(storageKey2)) - 1;
             //console.log("new count " + newCount);
             if(newCount === 0){
-                localStorage.setItem(storageKey2, newCount);
-                localStorage.removeItem(storageKey);
+                sessionStorage.setItem(storageKey2, newCount);
+                sessionStorage.removeItem(storageKey);
             }else{
-                localStorage.setItem(storageKey2, newCount);
+                sessionStorage.setItem(storageKey2, newCount);
             }
 
-            const t =  JSON.parse("["+localStorage.getItem(storageKey)+"]");
+            const t =  JSON.parse("["+sessionStorage.getItem(storageKey)+"]");
             //console.log("old cart " + t);
 
             let newCart = t.filter((s) => s.id !== prop.prodotto.id);
@@ -42,7 +42,7 @@ const ProdottoCart = (prop) => {
            
 
             console.log("dopo: "+ JSON.stringify(newCart).replace("[",""));
-            localStorage.setItem(storageKey, JSON.stringify(newArray));
+            sessionStorage.setItem(storageKey, JSON.stringify(newArray));
             //console.log("typeof: " + typeof storageCart);  
 
         }
