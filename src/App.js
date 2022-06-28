@@ -15,10 +15,12 @@ import ProdottoDettagliato from "./components/ProdottoDettagliato";
 import Carrello from "./components/Carrello";
 import Logout from "./components/Logout";
 
+
 function App() {
   const navigate = useNavigate();
+  const token = 'token-info';
   const [isShown, setIsShown] = useState(true);
-  const [isLogged, setIsLoagged] = useState(false);
+  const [isLogged, setIsLoagged] = useState(JSON.parse(sessionStorage.getItem(token)) || false);
   const [input, setInput] = useState("");
   const [list, setList] = useState({});
   const firebaseURLProduct =
@@ -57,6 +59,7 @@ function App() {
     const userData = list.find((user) => user.codiceCliente === input);
     const u = { ...userData };
     if (u.codiceCliente === input) {
+      sessionStorage.setItem(token, JSON.stringify(userData));
       setIsLoagged(true);
       setIsShown(false);
       navigate("/home");
