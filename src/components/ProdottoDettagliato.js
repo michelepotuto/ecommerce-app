@@ -1,11 +1,11 @@
 
 import Button from "./Button";
 import { storageName } from "../store/counter-store";
-
+import { useDispatch } from "react-redux";
+import { counterActions } from "../store/counter-store";
 
 const ProdottoDettagliato = (prop) => {
-
-
+  const dispatch = useDispatch();
   const prodottoDettagliato = JSON.parse(sessionStorage.getItem(storageName.DETAIL));
   
    const { nome, categoria, descrizioneD, img,  prezzo } =
@@ -13,7 +13,7 @@ const ProdottoDettagliato = (prop) => {
 
     const addToCartHandler = (product) => {
       //console.log("class prodotto: " + product);
-  
+      dispatch({ type: counterActions.INCREMENT });
       console.log("aggiunto al sessionStorage:" + product);
       if (!sessionStorage.getItem(storageName.COUNT)) {
   /*       console.log("COUNT " + sessionStorage.getItem(storageName.CART));
