@@ -8,6 +8,7 @@ import { counterActions } from "../store/counter-store";
 const Carrello = () => {
   const count = useSelector((store) => store.count);
   const cart = useSelector((store) => store.cartArray);
+  const total = useSelector((store) => store.total);
   const dispatch = useDispatch();
 
   useEffect(() => {//get the items after rendering the component
@@ -42,7 +43,7 @@ const Carrello = () => {
             
             <p type="button" className="btn btn-danger m-3" onClick={emptyCart} >EMPTY</p>
               
-            <p type="button" className="btn btn-success m-3">PAY</p>
+            <p type="button" className="btn btn-success m-3">PAY {total}</p>
             </div>
 
           {cart.map((prodotto, key) => (

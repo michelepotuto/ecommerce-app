@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { storageName } from "../store/counter-store";
 const storageKey = "logged-user";
 const AuthContext = React.createContext({
   isLoggedIn: JSON.parse(sessionStorage.getItem(storageKey) || false),
@@ -24,6 +25,9 @@ export const AuthContextProvider = (props) => {
   const logoutHandler = () => {
     setIsLoggedIn(false);
     setLoggedUser("");
+    sessionStorage.removeItem(storageName.CART);
+    sessionStorage.removeItem(storageName.COUNT);
+    sessionStorage.removeItem(storageName.DETAIL);
 
     sessionStorage.removeItem(storageKey);
   };

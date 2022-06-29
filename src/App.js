@@ -34,7 +34,7 @@ function App() {
 
   const dispatch = useDispatch();
   dispatch({ type: counterActions.START });
-
+  
   const updateProductsFetch = async () => {
     const answer = await readFirebase(firebaseURLProduct);
     const risposta = [];

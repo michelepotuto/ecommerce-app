@@ -19,6 +19,7 @@ const ProdottoCart = (prop) => {
         if (newCount === 0) { // if the cart is empty i remove the cart
             sessionStorage.removeItem(storageName.COUNT);
             sessionStorage.removeItem(storageName.CART);
+            sessionStorage.removeItem(storageName.TOTAL);
         } else {// else i just decrease the count
             sessionStorage.setItem(storageName.COUNT, newCount - 1);
         }
@@ -39,6 +40,14 @@ const ProdottoCart = (prop) => {
             let newCart = searchArray.filter((s) => s.nome !== nome);
             sessionStorage.setItem(storageName.CART, JSON.stringify(newCart).replace("[", "").replace("]", ""));
         }
+        //----------------------------------
+            //make a total and update it in the session storage
+            let count = 0;
+            JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]").map((prodotto) => {
+                count += (prodotto.prezzo) * (prodotto.quantita);
+            });
+            sessionStorage.setItem(storageName.TOTAL, count);
+        
         dispatch({ type: counterActions.UPDATE });
     }
 
