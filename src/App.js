@@ -89,31 +89,31 @@ function App() {
         //   )}
         // </form>
 
-
-  <div className="login_container">
-    <form onSubmit={handleSubmit}>
-
-      <div className="input-container">
-        <label>Codice cliente </label>
-        <input onChange={usernameChangeHandler} type="password" name="pass" required />
-      </div>
-      <div className="button-container">
-        <input type="submit" />
-      </div>
-    </form>
-  </div>
-
-
-
+        <div className="login_container">
+          <form onSubmit={handleSubmit}>
+            <div className="input-container">
+              <label>Codice cliente </label>
+              <input
+                onChange={usernameChangeHandler}
+                type="password"
+                name="pass"
+                required
+              />
+            </div>
+            <div className="button-container">
+              <input type="submit" />
+            </div>
+          </form>
+        </div>
       ) : (
         <div>
           <Navbar log={logFunc} user={user} />
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/*" element={<Home />} />
             <Route path="/prodotti" element={<Prodotti />} />
             <Route path="/dettaglio" element={<ProdottoDettagliato />} />
             <Route path="/carrello" element={<Carrello />} />
-            <Route path="" element={<App />} />
+            <Route path="*" element={<App />} />
           </Routes>
           <Footer />
         </div>
