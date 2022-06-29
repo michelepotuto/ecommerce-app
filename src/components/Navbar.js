@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <div className="nav-name">Hi,{ctx.loggedUser}!</div>
+            <div className="nav-name">Hi, {ctx.loggedUser}!</div>
           </li>
 
           <li className="nav-item active">

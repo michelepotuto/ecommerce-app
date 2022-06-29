@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import ProdottoSingolo from "./ProdottoSingolo";
-import { Routes } from "react-router-dom";
 import useFirebase from "../hooks/use-firebase";
 
 const Prodotti = () => {
@@ -36,14 +35,10 @@ const Prodotti = () => {
 
   return (
     <>
-      <Routes></Routes>
-      {isLoading ? (
-        list.map((prodotto, key) => (
-          <ProdottoSingolo prodotto={prodotto} key={key} />
-        ))
-      ) : (
-        <h1 className="text-center">DOWNLOADING PRODUCTS...</h1>
-      )}
+
+      {isLoading ? list.map((prodotto, key) => (
+        <ProdottoSingolo prodotto={prodotto} key={key} />
+      )) : <h1 className='text-center'>DOWNLOADING PRODUCTS...</h1>}
     </>
   );
 };
