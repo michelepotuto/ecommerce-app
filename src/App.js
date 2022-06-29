@@ -14,6 +14,7 @@ import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
 //import Cart from './pages/Cart';
 import Carrello from "./components/Carrello";
+import NavbarLogin from "./components/NavbarLogin";
 
 function App() {
   const navigate = useNavigate();
@@ -92,6 +93,7 @@ function App() {
         // </form>
 
         <div className="login_container">
+                    <NavbarLogin />
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <label>Codice cliente </label>
