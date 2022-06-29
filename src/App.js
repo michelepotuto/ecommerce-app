@@ -54,7 +54,6 @@ function App() {
     setInput(value);
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const userData = list.find((user) => user.codiceCliente === input);
@@ -78,8 +77,6 @@ function App() {
     setIsLogged(false);
     setIsShown(true);
   };
-
-  console.log("IsLoged? " + isLogged);
 
   return (
     <Fragment>
