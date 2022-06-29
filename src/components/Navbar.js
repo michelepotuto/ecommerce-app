@@ -49,7 +49,7 @@ const Navbar = (prop) => {
 
 
           <li className="nav-item">
-            <NavLink className="nav-link" to="/carrello">
+            <NavLink className="nav-link " to="/carrello">
               Cart ({count})
             </NavLink>
           </li>

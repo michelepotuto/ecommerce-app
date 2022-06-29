@@ -84,14 +84,31 @@ function App() {
   return (
     <Fragment>
       {!isLogged ? (
-        <form onSubmit={handleSubmit}>
-          {isShown && (
-            <div>
-              <input onChange={usernameChangeHandler} />
-              <button>Login</button>
-            </div>
-          )}
-        </form>
+        // <form onSubmit={handleSubmit}>
+        //   {isShown && (
+        //     <div>
+        //       <input onChange={usernameChangeHandler} />
+        //       <button>Login</button>
+        //     </div>
+        //   )}
+        // </form>
+
+
+  <div className="login_container">
+    <form onSubmit={handleSubmit}>
+
+      <div className="input-container">
+        <label>Codice cliente </label>
+        <input onChange={usernameChangeHandler} type="password" name="pass" required />
+      </div>
+      <div className="button-container">
+        <input type="submit" />
+      </div>
+    </form>
+  </div>
+
+
+
       ) : (
         <div>
           <Navbar log={logFunc} user={user} />
