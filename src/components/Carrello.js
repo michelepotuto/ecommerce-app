@@ -38,16 +38,18 @@ const Carrello = () => {
         </div>
       ) : (
         <div>
-          <div className="d-flex justify-content-center">
+          <div className="container_emptypay">
             
-          <p type="button" className="btn btn-danger" onClick={emptyCart} >EMPTY</p>
-            
-          <p type="button" className="btn btn-success">PAY</p>
-          </div>
+            <p type="button" className="btn btn-danger m-3" onClick={emptyCart} >EMPTY</p>
+              
+            <p type="button" className="btn btn-success m-3">PAY</p>
+            </div>
 
           {cart.map((prodotto, key) => (
             <ProdottoCart key={key} prodotto={prodotto} />
           ))}
+
+
         </div>
       )}
     </>

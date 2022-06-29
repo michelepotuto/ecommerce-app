@@ -290,6 +290,14 @@ flex-direction: column;
 
 }
 
+.container_emptypay {
+  display: flex;
+  justify-content: center;
+  padding: 13px;
+
+  
+}
+
 
 
 
