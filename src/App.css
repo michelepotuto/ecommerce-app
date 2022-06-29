@@ -108,7 +108,6 @@ Login {
   display: flex;
 flex-direction: column;
 justify-content: center;
-margin-top: 200px
 }
 
 input[type="text"],
@@ -289,6 +288,14 @@ a:-webkit-any-link {
 display: flex;
 flex-direction: column;
 
+}
+
+.container_emptypay {
+  display: flex;
+  justify-content: center;
+  padding: 13px;
+
+  
 }
 
 
