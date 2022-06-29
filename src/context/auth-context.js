@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { storageName } from "../store/counter-store";
 const storageKey = "logged-user";
 const AuthContext = React.createContext({
-  isLoggedIn: JSON.parse(sessionStorage.getItem(storageKey) || false),
+  isLoggedIn: sessionStorage.getItem(storageKey),
   loggedUser: "",
   login: (username, password) => {},
   logout: () => {},
@@ -34,9 +34,10 @@ export const AuthContextProvider = (props) => {
 
   useEffect(() => {
     const storageUser = sessionStorage.getItem(storageKey);
+    const obj = JSON.parse(storageUser);
     if (storageUser) {
       setIsLoggedIn(true);
-      setLoggedUser(storageUser);
+      setLoggedUser(obj.nome);
       sessionStorage.setItem(storageKey, storageUser);
     }
   }, []);

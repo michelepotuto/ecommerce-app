@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
-import ProdottoSingolo from './ProdottoSingolo';
-import { Routes } from 'react-router-dom';
+import React, { useEffect } from "react";
+import ProdottoSingolo from "./ProdottoSingolo";
+import { Routes } from "react-router-dom";
 import useFirebase from "../hooks/use-firebase";
 
 const Prodotti = () => {
-
-  const [list, setList] = React.useState([]);// will contain the list of products
-  const firebaseURLProduct = "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/product.json";
+  const [list, setList] = React.useState([]); // will contain the list of products
+  const firebaseURLProduct =
+    "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/product.json";
   const { readFirebase, isLoading } = useFirebase();
-  
+
   useEffect(() => {
     updateProductsFetch();
   }, []);
@@ -28,22 +28,24 @@ const Prodotti = () => {
         img: answer[p].img,
         quantita: answer[p].quantita,
         max: answer[p].quantita,
-        prezzo: answer[p].prezzo
-      })
+        prezzo: answer[p].prezzo,
+      });
     }
     setList(risposta);
   };
 
-
   return (
     <>
-      <Routes>
-      </Routes>
-      {isLoading ? list.map((prodotto, key) => (
-        <ProdottoSingolo prodotto={prodotto} key={key} />
-      )) : <h1 className='text-center'>DOWNLOADING PRODUCTS...</h1>}
+      <Routes></Routes>
+      {isLoading ? (
+        list.map((prodotto, key) => (
+          <ProdottoSingolo prodotto={prodotto} key={key} />
+        ))
+      ) : (
+        <h1 className="text-center">DOWNLOADING PRODUCTS...</h1>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Prodotti
+export default Prodotti;

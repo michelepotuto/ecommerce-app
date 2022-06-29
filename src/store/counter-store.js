@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { legacy_createStore } from "redux";
 
-
 export const counterActions = {
   INCREMENT: "INCREMENT",
   DECREMENT: "DECREMENT",
@@ -18,7 +17,10 @@ export const storageName = {
   START: "START",
 };
 
-const counterReducer = (state = { count: 0, cartArray: [], total:0 }, action) => {
+const counterReducer = (
+  state = { count: 0, cartArray: [], total: 0 },
+  action
+) => {
   if (action.type === counterActions.INCREMENT) {
     return {
       ...state,
@@ -36,13 +38,13 @@ const counterReducer = (state = { count: 0, cartArray: [], total:0 }, action) =>
     if (!sessionStorage.getItem(storageName.TOTAL)) {
       sessionStorage.setItem(storageName.TOTAL, 0);
     }
-    
+
     return {
       count: parseInt(sessionStorage.getItem(storageName.COUNT)),
       cartArray: JSON.parse(
         "[" + sessionStorage.getItem(storageName.CART) + "]"
       ),
-      total:sessionStorage.getItem(storageName.TOTAL),
+      total: sessionStorage.getItem(storageName.TOTAL),
     };
   }
   if (action.type === counterActions.START) {
