@@ -5,15 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import counterStore from './store/counter-store';
+import counterStore from "./store/counter-store";
+import { AuthContextProvider } from "./context/auth-context";
 
 //import store from "./store/cart-store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-     <Provider store={counterStore}> 
-      <App />
-     </Provider> 
+    <AuthContextProvider>
+      <Provider store={counterStore}>
+        <App />
+      </Provider>
+    </AuthContextProvider>
   </BrowserRouter>
 );
 

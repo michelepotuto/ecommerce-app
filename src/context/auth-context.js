@@ -15,11 +15,9 @@ export const AuthContextProvider = (props) => {
   );
   const [loggedUser, setLoggedUser] = useState("");
 
-  const loginHandler = (obj, password) => {
-    const data = { ...obj };
-
+  const loginHandler = (obj) => {
     setIsLoggedIn(true);
-    setLoggedUser(data.nome);
+    setLoggedUser(obj.nome);
     sessionStorage.setItem(storageKey, JSON.stringify(obj));
   };
 

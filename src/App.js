@@ -1,5 +1,5 @@
 import "./App.css";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import useFirebase from "./hooks/use-firebase";
 import { useDispatch } from "react-redux";
@@ -13,15 +13,12 @@ import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
 //import Cart from './pages/Cart';
 import Carrello from "./components/Carrello";
+import AuthContext from "./context/auth-context";
 
 function App() {
   const navigate = useNavigate();
+  const ctx = useContext(AuthContext);
 
-  const token = "token-user";
-  const [user, setUser] = useState("");
-  const [isLogged, setIsLogged] = useState(
-    JSON.parse(sessionStorage.getItem(token)) || false
-  );
   const [input, setInput] = useState("");
   const [list, setList] = useState({});
 
@@ -56,40 +53,20 @@ function App() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     const userData = list.find((p) => p.codiceCliente === input);
-    const u = { ...userData };
+    const obj = { ...userData };
 
     if (userData) {
-      sessionStorage.setItem(token, JSON.stringify(u));
-      setUser(u.nome);
-      setIsLogged(true);
+      ctx.login(obj);
       navigate("/home");
     } else {
       alert("codice errato");
     }
   };
 
-  const logFunc = () => {
-    sessionStorage.removeItem(token);
-    sessionStorage.removeItem(storageName.COUNT);
-    sessionStorage.removeItem(storageName.CART);
-    sessionStorage.removeItem(storageName.DETAIL);
-    setIsLogged(false);
-  };
-
   return (
     <Fragment>
-      {!isLogged ? (
-        // <form onSubmit={handleSubmit}>
-        //   {isShown && (
-        //     <div>
-        //       <input onChange={usernameChangeHandler} />
-        //       <button>Login</button>
-        //     </div>
-        //   )}
-        // </form>
-
+      {!ctx.isLoggedIn ? (
         <div className="login_container">
           <form onSubmit={handleSubmit}>
             <div className="input-container">
@@ -108,7 +85,7 @@ function App() {
         </div>
       ) : (
         <div>
-          <Navbar log={logFunc} user={user} />
+          <Navbar />
           <Routes>
             <Route path="/*" element={<Home />} />
             <Route path="/prodotti" element={<Prodotti />} />

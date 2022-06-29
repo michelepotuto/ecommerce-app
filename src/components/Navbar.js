@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../context/auth-context";
 
-const Navbar = (prop) => {
+const Navbar = () => {
   const count = useSelector((store) => store.count);
-  const user = JSON.parse(sessionStorage.getItem("token-user"));
+  const ctx = useContext(AuthContext);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,11 +25,11 @@ const Navbar = (prop) => {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <div className="nav-name">Hi, {user.nome}!</div>
+            <div className="nav-name">Hi,{ctx.loggedUser}!</div>
           </li>
 
           <li className="nav-item active">
-            <NavLink onClick={prop.log} className="nav-link" to="*">
+            <NavLink onClick={ctx.logout} className="nav-link" to="*">
               Logout
             </NavLink>
           </li>
