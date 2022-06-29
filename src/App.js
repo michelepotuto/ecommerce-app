@@ -13,7 +13,6 @@ import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
 //import Cart from './pages/Cart';
 import Carrello from "./components/Carrello";
-import validateCodCliente from "./components/Validation";
 
 function App() {
   const navigate = useNavigate();
@@ -53,7 +52,6 @@ function App() {
   const usernameChangeHandler = (e) => {
     const value = e.target.value;
     setInput(value);
-    validateCodCliente();
   };
 
   const handleSubmit = (event) => {

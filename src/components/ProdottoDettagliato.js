@@ -42,11 +42,11 @@ const ProdottoDettagliato = (prop) => {
   return (
       <div className="container">
         <div className="card">
-          <div class="row align-items-center">
-            <div class="col">
+          <div className="row align-items-center">
+            <div className="col">
               <img src={`${img}`} className="img-thumbnail" alt="..." />
             </div>
-            <div class="col">
+            <div className="col">
               <div className="card-body">
                 <h5 className="card-title">
                   {nome} - {categoria}
