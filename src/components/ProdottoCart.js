@@ -3,23 +3,23 @@ import { storageName } from "../store/counter-store";
 import { useDispatch } from "react-redux";
 import { counterActions } from "../store/counter-store";
 
+
 const ProdottoCart = (prop) => {
     const dispatch = useDispatch();
 
-
+    // attributes of the product in this card
     const { nome, categoria, descrizioneB, img, quantita, prezzo } =
         prop.prodotto;
 
+    //remove this item from the cart
     const removeFromCart = (key) => {
-
-        //console.log(JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]"))
-        //console.log("remove");
+        //get current count to check if it's equals to 0
         const newCount = parseInt(sessionStorage.getItem(storageName.COUNT));
-        //console.log("new count " + newCount);
-        if (newCount === 0) { // se il carrello è vuoto allora elimino anche il carrello e cart
+
+        if (newCount === 0) { // if the cart is empty i remove the cart
             sessionStorage.removeItem(storageName.COUNT);
             sessionStorage.removeItem(storageName.CART);
-        } else {
+        } else {// else i just decrease the count
             sessionStorage.setItem(storageName.COUNT, newCount - 1);
         }
         //----------------------------------
@@ -29,7 +29,7 @@ const ProdottoCart = (prop) => {
         const index = searchArray.findIndex(function (item) {
             return item.nome === nome;
         });
-
+        //if its quantity is >1 i decrease it
         if (searchArray[index].quantita > 1) {
             //decrease quantity
             searchArray[index].quantita--;
