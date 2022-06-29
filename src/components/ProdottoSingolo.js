@@ -72,7 +72,7 @@ const ProdottoSingolo = (prop) => {
         </div>
         <div className="col">
           <div className="card_text-end">
-            <Link to="/dettaglio" onClick={detailHandler}>Vai ai dettagli ⇢</Link>
+            <Link to="/dettaglio" onClick={detailHandler}>Go to details ⇢</Link>
           </div>
         </div>
 

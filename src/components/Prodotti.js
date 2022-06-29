@@ -40,7 +40,7 @@ const Prodotti = () => {
 
       {isLoading ? list.map((prodotto, key) => (
         <ProdottoSingolo prodotto={prodotto} key={key} />
-      )) : <h1 className='text-center'>CARICAMENTO PRODOTTI...</h1>}
+      )) : <h1 className='text-center'>DOWNLOADING PRODUCTS...</h1>}
     </>
   )
 }
