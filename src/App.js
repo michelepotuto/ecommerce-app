@@ -56,14 +56,13 @@ function App() {
     validateCodCliente();
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const userData = list.find((user) => user.codiceCliente === input);
-    setUser(userData.nome);
     const u = { ...userData };
     if (u.codiceCliente === input) {
       sessionStorage.setItem(token, JSON.stringify(userData));
+      setUser(userData.nome);
       setIsLogged(true);
       setIsShown(false);
       navigate("/home");
@@ -80,8 +79,6 @@ function App() {
     setIsLogged(false);
     setIsShown(true);
   };
-
-  console.log("IsLoged? " + isLogged);
 
   return (
     <Fragment>

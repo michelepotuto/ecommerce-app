@@ -6,6 +6,12 @@
 
 }
 
+a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .nav-name {
   display: block;
   padding: 0.5rem 1rem;

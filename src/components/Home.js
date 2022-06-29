@@ -5,7 +5,7 @@ import logo1 from '../assets/Sedia_gaming.jpg';
 import { Carousel } from 'react-bootstrap';
 
 const Home = () => (
-  <div className="h1"> <hr></hr> ⮊ BENVENUTO IN TEAM SHOP! ⮈<hr></hr>
+  <div className="h1"> <hr></hr> ⮊ WELLCOME IN TEAM SHOP! ⮈<hr></hr>
 <Carousel>
   <Carousel.Item>
     <div className="container">
@@ -17,7 +17,7 @@ const Home = () => (
     </div>
     <Carousel.Caption>
       
-      <p>10% di sconto sul primo acquisto</p>
+      <p>10% discount on your first purchase</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -30,7 +30,7 @@ const Home = () => (
 </div>
     <Carousel.Caption>
      
-      <p>10% di sconto sui gaming laptop</p>
+      <p>15% discount on your first gaming laptop</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -44,7 +44,7 @@ const Home = () => (
 
     <Carousel.Caption>
 
-      <p>15% di sconto sul tuo primo iPhone acquistato</p>
+      <p>15% discount on your first iphone</p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
