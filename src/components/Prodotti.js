@@ -37,8 +37,7 @@ const Prodotti = () => {
 
   return (
     <>
-      <Routes>
-      </Routes>
+
       {isLoading ? list.map((prodotto, key) => (
         <ProdottoSingolo prodotto={prodotto} key={key} />
       )) : <h1 className='text-center'>DOWNLOADING PRODUCTS...</h1>}
