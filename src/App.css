@@ -108,7 +108,6 @@ Login {
   display: flex;
 flex-direction: column;
 justify-content: center;
-margin-top: 200px
 }
 
 input[type="text"],
