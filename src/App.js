@@ -16,14 +16,15 @@ import Carrello from "./components/Carrello";
 
 function App() {
   const navigate = useNavigate();
+
   const token = "token-user";
   const [user, setUser] = useState("");
-  const [isShown, setIsShown] = useState(true);
   const [isLogged, setIsLogged] = useState(
     JSON.parse(sessionStorage.getItem(token)) || false
   );
   const [input, setInput] = useState("");
   const [list, setList] = useState({});
+
   const firebaseURLProduct =
     "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/credentials.json";
   const { readFirebase } = useFirebase();
@@ -57,11 +58,11 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const userData = list.find((p) => p.codiceCliente === input);
-    if (userData.codiceCliente === input) {
-      sessionStorage.setItem(token, JSON.stringify(userData));
-      setUser(userData.nome);
+    const u = { ...userData };
+    if (u.codiceCliente === input) {
+      sessionStorage.setItem(token, JSON.stringify(u));
+      setUser(u.nome);
       setIsLogged(true);
-      setIsShown(false);
       navigate("/home");
     } else {
       alert("codice errato");
@@ -74,7 +75,6 @@ function App() {
     sessionStorage.removeItem(storageName.CART);
     sessionStorage.removeItem(storageName.DETAIL);
     setIsLogged(false);
-    setIsShown(true);
   };
 
   return (
