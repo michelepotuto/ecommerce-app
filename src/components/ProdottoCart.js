@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { storageName } from "../store/counter-store";
-import {   useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { counterActions } from "../store/counter-store";
 
 const ProdottoCart = (prop) => {
@@ -12,45 +12,33 @@ const ProdottoCart = (prop) => {
 
     const removeFromCart = (key) => {
 
-        if (sessionStorage.getItem(storageName.COUNT) ) {
-            //console.log(JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]"))
-            console.log("remove");
-            const newCount = parseInt(sessionStorage.getItem(storageName.COUNT));
-            //console.log("new count " + newCount);
-            if(newCount === 0){
-                sessionStorage.removeItem(storageName.COUNT);
-                sessionStorage.removeItem(storageName.CART);
-            }else{
-                sessionStorage.setItem(storageName.COUNT, newCount-1);
-            }
-
-            const t =  JSON.parse("["+sessionStorage.getItem(storageName.CART)+"]");
-            //console.log("old cart " + t);
-            
-            let newCart = t.filter((s) => s.id !== prop.prodotto.id);
-            //console.log("new cart " + JSON.stringify(newCart).replace("[","").replace("]",""));
-            const newArray = [];
-            newCart.map ((p)=> {
-                newArray.push({
-                  id: p.id,
-                  nome: p.nome,
-                  categoria: p.categoria,
-                  descrizioneB: p.descrizioneB,
-                  descrizioneD: p.descrizioneD,
-                  img: p.img,
-                  quantita: p.quantita,
-                  prezzo: p.prezzo
-                })
-              })
-           //console.log("new cart " + JSON.stringify(newCart));
-           
-
-            //console.log("dopo: "+ JSON.stringify(newCart).replace("[",""));
-            sessionStorage.setItem(storageName.CART, JSON.stringify(newCart).replace("[","").replace("]",""));
-            //console.log("typeof: " + typeof storageCart);  
-
+        //console.log(JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]"))
+        //console.log("remove");
+        const newCount = parseInt(sessionStorage.getItem(storageName.COUNT));
+        //console.log("new count " + newCount);
+        if (newCount === 0) { // se il carrello è vuoto allora elimino anche il carrello e cart
+            sessionStorage.removeItem(storageName.COUNT);
+            sessionStorage.removeItem(storageName.CART);
+        } else {
+            sessionStorage.setItem(storageName.COUNT, newCount - 1);
         }
+        //----------------------------------
+        // search the product to decrease his quantity
+        //find index of this element
+        const searchArray = JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]");
+        const index = searchArray.findIndex(function (item) {
+            return item.nome === nome;
+        });
 
+        if (searchArray[index].quantita > 1) {
+            //decrease quantity
+            searchArray[index].quantita--;
+            sessionStorage.setItem(storageName.CART, JSON.stringify(searchArray).replace("[", "").replace("]", ""));
+        } else {
+            //quantity is 1 so i have to remove this element
+            let newCart = searchArray.filter((s) => s.nome !== nome);
+            sessionStorage.setItem(storageName.CART, JSON.stringify(newCart).replace("[", "").replace("]", ""));
+        }
         dispatch({ type: counterActions.UPDATE });
     }
 
@@ -66,6 +54,7 @@ const ProdottoCart = (prop) => {
                             {nome} - {categoria}
                         </h5>
                         <p className="card-text">{descrizioneB}</p>
+                        <p className="Prezzo">{quantita} X </p>
                         <p className="Prezzo">{prezzo} € </p>
                     </div>
                 </div>

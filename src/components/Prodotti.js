@@ -26,6 +26,7 @@ const Prodotti = () => {
         descrizioneD: answer[p].descrizioneD,
         img: answer[p].img,
         quantita: answer[p].quantita,
+        max: answer[p].quantita,
         prezzo: answer[p].prezzo
       })
     }

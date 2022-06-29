@@ -79,7 +79,7 @@ function App() {
     setIsShown(true);
   };
 
-  console.log("IsLoged? " + isLogged);
+  //console.log("IsLoged? " + isLogged);
 
   return (
     <Fragment>
