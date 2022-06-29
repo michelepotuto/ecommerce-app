@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import ProdottoSingolo from './ProdottoSingolo';
-import { Routes } from 'react-router-dom';
+
 import useFirebase from "../hooks/use-firebase";
 
 const Prodotti = () => {
