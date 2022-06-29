@@ -14,15 +14,12 @@ const Navbar = (prop) => {
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
-
-        <li className="nav-item">
-            <div className="nav-name" to="/">
-              Hi, {user.nome}!
-            </div>
+          <li className="nav-item">
+            <div className="nav-name">Hi, {user.nome}!</div>
           </li>
 
           <li className="nav-item active">
-            <NavLink onClick={prop.log} className="nav-link" to="">
+            <NavLink onClick={prop.log} className="nav-link" to="*">
               Logout
             </NavLink>
           </li>
@@ -38,7 +35,6 @@ const Navbar = (prop) => {
               Shop
             </NavLink>
           </li>
-
 
           <li className="nav-item">
             <NavLink className="nav-link " to="/carrello">
