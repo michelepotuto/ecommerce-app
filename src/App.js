@@ -3,12 +3,12 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import useFirebase from "./hooks/use-firebase";
 import { useDispatch } from "react-redux";
-import { counterActions, storageName } from "./store/counter-store";
+import { counterActions } from "./store/counter-store";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 // import Login from "./pages/Login";
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle";
 import Footer from "./components/Footer";
 import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
@@ -70,7 +70,7 @@ function App() {
     <Fragment>
       {!ctx.isLoggedIn ? (
         <div className="login_container">
-                    <NavbarLogin />
+          <NavbarLogin />
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <label>Codice cliente </label>
