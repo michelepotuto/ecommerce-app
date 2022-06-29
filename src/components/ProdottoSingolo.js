@@ -52,6 +52,12 @@ const ProdottoSingolo = (prop) => {
         sessionStorage.setItem(storageName.COUNT, prev);
       }
     }
+    //make a total and update it in the session storage
+    let count=0;
+    JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]").map((prodotto) => {
+      count += (prodotto.prezzo)*(prodotto.quantita);
+    }); 
+    sessionStorage.setItem(storageName.TOTAL, count);
     //update
     dispatch({ type: counterActions.UPDATE });
   };
