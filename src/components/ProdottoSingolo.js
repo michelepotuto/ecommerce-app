@@ -8,31 +8,31 @@ const ProdottoSingolo = (prop) => {
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.cartArray);
 
+  //function to add this product in the cart
   const addToCartHandler = (product) => {
     //update of count in the cart of navbar
     dispatch({ type: counterActions.INCREMENT })
-    //console.log("class prodotto: " + product);
-    //controlli per cart
+
+    //if cart doesn't exist or count is zero, create session storage with the first product
     if (!sessionStorage.getItem(storageName.CART) || parseInt(sessionStorage.getItem(storageName.COUNT)) === 0) {
-      //if it's the first element i reset its quantity to 1
+      //it's the first element so I reset its quantity to 1
       product.quantita = 1;
       sessionStorage.setItem(storageName.CART, JSON.stringify(product));
       //increment cart count
       const prev = parseInt(sessionStorage.getItem(storageName.COUNT)) + 1;
       sessionStorage.setItem(storageName.COUNT, prev);
-    } else {
+    } else {// cart is not empty so i check if i already have this product in the cart
       //find duplicate in cart
       const searchArray = JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]");
       const index = searchArray.findIndex(function (item) {
         return item.nome === product.nome;
       });
-      //console.log("searchArray[" + index + "]: " + searchArray[index].quantita);
-      //---------------------------------------
+
       if (index !== -1) { // if find duplicate in cart
-        if (searchArray[index].quantita < searchArray[index].max) {// check if there are enough product in store 
-          // actual quantity < store quantiti of that product
+        //I check if there are enough product in store, actual quantity < store quantity of that product
+        if (searchArray[index].quantita < searchArray[index].max) {//if there are enough product in store
+          //increase quantity
           searchArray[index].quantita++;
-          //console.log("quantità: " + searchArray[index].quantita + " - max: " + searchArray[index].max);
           //increment cart count
           const prev = parseInt(sessionStorage.getItem(storageName.COUNT)) + 1;
           sessionStorage.setItem(storageName.COUNT, prev);
@@ -44,23 +44,23 @@ const ProdottoSingolo = (prop) => {
       } else { // it's not a duplicate
         //make his quantity 1
         product.quantita = 1;
-        //console.log("quantità: " + product.quantita + " - max: " + product.max);
         //put it in the last position of the cart
         const storageCart = [sessionStorage.getItem(storageName.CART), JSON.stringify(product)];
+        //update cart and increment cart count
         sessionStorage.setItem(storageName.CART, storageCart);
-        //increment cart count
         const prev = parseInt(sessionStorage.getItem(storageName.COUNT)) + 1;
         sessionStorage.setItem(storageName.COUNT, prev);
       }
     }
+    //update
     dispatch({ type: counterActions.UPDATE });
-/*     console.log("aggiunto al sessionStorage:" + JSON.stringify(product));
- */  };
+  };
 
+  // variable to use
   const { nome, categoria, descrizioneB, img, prezzo, max } =
     prop.prodotto;
-  //console.log(quantita);
-
+  
+//go to product detail page
   const detailHandler = () => {
     sessionStorage.setItem(storageName.DETAIL, JSON.stringify(prop.prodotto));
   }
@@ -85,8 +85,7 @@ const ProdottoSingolo = (prop) => {
           <div className="col"><Button
 
             onClick={() => {
-              addToCartHandler(prop.prodotto);//new Prodotto(id, nome, categoria, descrizioneB, descrizioneD, img, quantità, prezzo)
-              //console.log("Singolo add : " + prop.prodotto);
+              addToCartHandler(prop.prodotto);
             }}
           >
             Add to cart

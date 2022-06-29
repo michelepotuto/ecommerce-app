@@ -10,15 +10,16 @@ const Carrello = () => {
   const cart = useSelector((store) => store.cartArray);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useEffect(() => {//get the items after rendering the component
     dispatch({ type: counterActions.UPDATE });
-    if (parseInt(sessionStorage.getItem(storageName.COUNT)) > 0) {
-      //console.log(JSON.parse("[" + sessionStorage.getItem(storageName.CART) + "]")) ;
-      //console.log("carrello: " + t)
-      //console.log("typeof: " + t);
-      /*console.log("typeof: " + typeof storageCart);*/
-    }
   }, []);
+
+  const emptyCart = () => {//remove all the item in the cart and set 0 to the count
+    sessionStorage.setItem(storageName.COUNT, 0);
+    sessionStorage.removeItem(storageName.CART);
+    dispatch({ type: counterActions.UPDATE });//refresh the cart
+    console.log("reset cart");
+  };
 
   return (
     <>
@@ -36,9 +37,18 @@ const Carrello = () => {
           </div>
         </div>
       ) : (
-        cart.map((prodotto, key) => (
-          <ProdottoCart key={key} prodotto={prodotto} />
-        ))
+        <div>
+          <div className="d-flex justify-content-center">
+            
+          <p type="button" className="btn btn-danger" onClick={emptyCart} >EMPTY</p>
+            
+          <p type="button" className="btn btn-success">PAY</p>
+          </div>
+
+          {cart.map((prodotto, key) => (
+            <ProdottoCart key={key} prodotto={prodotto} />
+          ))}
+        </div>
       )}
     </>
   );

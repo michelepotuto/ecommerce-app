@@ -4,19 +4,20 @@ import { Routes } from 'react-router-dom';
 import useFirebase from "../hooks/use-firebase";
 
 const Prodotti = () => {
-  const [list, setList] = React.useState([]);
-  const firebaseURLProduct = "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/product.json"
+
+  const [list, setList] = React.useState([]);// will contain the list of products
+  const firebaseURLProduct = "https://stage-app-109c7-default-rtdb.europe-west1.firebasedatabase.app/product.json";
   const { readFirebase, isLoading } = useFirebase();
   
   useEffect(() => {
     updateProductsFetch();
   }, []);
 
-
+  //function that will fetch the products from the firebase using the url
   const updateProductsFetch = async () => {
     const answer = await readFirebase(firebaseURLProduct);
-    //console.log("prodotti: " +  answer);
     const risposta = [];
+    //put the answer in an array and save it in the state List
     for (const p in answer) {
       risposta.push({
         id: answer[p].id,
@@ -33,12 +34,11 @@ const Prodotti = () => {
     setList(risposta);
   };
 
-//console.log("prima lista: "+list);
+
   return (
     <>
       <Routes>
       </Routes>
-
       {isLoading ? list.map((prodotto, key) => (
         <ProdottoSingolo prodotto={prodotto} key={key} />
       )) : <h1 className='text-center'>DOWNLOADING PRODUCTS...</h1>}
