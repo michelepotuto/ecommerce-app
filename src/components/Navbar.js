@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = (prop) => {
   const count = useSelector((store) => store.count);
+  const user = JSON.parse(sessionStorage.getItem("token-user"));
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,7 +25,7 @@ const Navbar = (prop) => {
 
         <li className="nav-item">
             <div className="nav-name" to="/">
-              Benvenuto, {prop.user}!
+              Benvenuto, {user.nome}!
             </div>
           </li>
 
