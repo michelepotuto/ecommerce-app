@@ -285,6 +285,12 @@ a:-webkit-any-link {
   width: 100%;
 }
 
+.container_link_dettagli {
+display: flex;
+flex-direction: column;
+
+}
+
 
 
 

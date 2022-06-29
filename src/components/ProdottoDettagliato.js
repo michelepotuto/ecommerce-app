@@ -3,6 +3,8 @@ import Button from "./Button";
 import { storageName } from "../store/counter-store";
 import { useDispatch } from "react-redux";
 import { counterActions } from "../store/counter-store";
+import { Link } from "react-router-dom";
+
 
 const ProdottoDettagliato = (prop) => {
   const dispatch = useDispatch();
@@ -38,8 +40,7 @@ const ProdottoDettagliato = (prop) => {
 
   
   return (
-    <div>
-      <div>
+      <div className="container">
         <div className="card">
           <div class="row align-items-center">
             <div class="col">
@@ -52,6 +53,15 @@ const ProdottoDettagliato = (prop) => {
                 </h5>
                 <p className="card-text">{descrizioneD}</p>
                 <p className="Prezzo">{prezzo}</p>
+                <div className="container_link_dettagli">
+
+                <Link to="/prodotti">
+                 <div> 
+                 ⇠ Back to shop 
+                 </div>
+
+                </Link>
+
                 <Button
                   onClick={() => {
                     addToCartHandler(prodottoDettagliato);
@@ -59,12 +69,16 @@ const ProdottoDettagliato = (prop) => {
                 >
                   Add to cart
                 </Button>
+
+
+
+
+                </div>
               </div>
             </div>
             
           </div>
         </div>
-      </div>
       </div>
   );
 };

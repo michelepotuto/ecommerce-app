@@ -58,9 +58,8 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const userData = list.find((user) => user.codiceCliente === input);
-    const u = { ...userData };
-    if (u.codiceCliente === input) {
+    const userData = list.find((p) => p.codiceCliente === input);
+    if (userData.codiceCliente === input) {
       sessionStorage.setItem(token, JSON.stringify(userData));
       setUser(userData.nome);
       setIsLogged(true);
