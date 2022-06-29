@@ -13,6 +13,7 @@ import Prodotti from "./components/Prodotti";
 import ProdottoDettagliato from "./components/ProdottoDettagliato";
 //import Cart from './pages/Cart';
 import Carrello from "./components/Carrello";
+import validateCodCliente from "./components/Validation";
 
 function App() {
   const navigate = useNavigate();
@@ -52,16 +53,16 @@ function App() {
   const usernameChangeHandler = (e) => {
     const value = e.target.value;
     setInput(value);
+    validateCodCliente();
   };
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const userData = list.find((user) => user.codiceCliente === input);
-    setUser(userData.nome);
     const u = { ...userData };
     if (u.codiceCliente === input) {
       sessionStorage.setItem(token, JSON.stringify(userData));
+      setUser(userData.nome);
       setIsLogged(true);
       setIsShown(false);
       navigate("/home");
@@ -79,19 +80,34 @@ function App() {
     setIsShown(true);
   };
 
-  //console.log("IsLoged? " + isLogged);
-
   return (
     <Fragment>
       {!isLogged ? (
-        <form onSubmit={handleSubmit}>
-          {isShown && (
-            <div>
-              <input onChange={usernameChangeHandler} />
-              <button>Login</button>
-            </div>
-          )}
-        </form>
+        // <form onSubmit={handleSubmit}>
+        //   {isShown && (
+        //     <div>
+        //       <input onChange={usernameChangeHandler} />
+        //       <button>Login</button>
+        //     </div>
+        //   )}
+        // </form>
+
+
+  <div className="login_container">
+    <form onSubmit={handleSubmit}>
+
+      <div className="input-container">
+        <label>Codice cliente </label>
+        <input onChange={usernameChangeHandler} type="password" name="pass" required />
+      </div>
+      <div className="button-container">
+        <input type="submit" />
+      </div>
+    </form>
+  </div>
+
+
+
       ) : (
         <div>
           <Navbar log={logFunc} user={user} />

@@ -24,12 +24,12 @@ const Carrello = () => {
     <>
       {count === 0 ? (
         <div>
-          <h1 className="text-center">Carrello vuoto</h1>
+          <h1 className="text-center">Empty cart</h1>
           <div className="row align-items-center">
             <div className="col">
               <h2 className="text-center">
                 <button className="inizia_spesa border border-1" to="/prodotti">
-                  <Link to="/prodotti">Inizia la tua spesa</Link>
+                  <Link to="/prodotti">Start your shopping</Link>
                 </button>
               </h2>
             </div>

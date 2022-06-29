@@ -1,51 +1,54 @@
-import { createStore } from "redux";
+import { legacy_createStore } from "redux";
 
 export const counterActions = {
-    INCREMENT: 'INCREMENT',
-    DECREMENT: 'DECREMENT',
-    UPDATE: 'UPDATE',
-    START: 'START'
-  }
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT",
+  UPDATE: "UPDATE",
+  START: "START",
+};
 
-  export const storageName = {
-    COUNT: 'USER-CART-COUNT',
-    CART: 'USER-CART',
-    DETAIL: 'USER-DETAIL',
-    START: 'START'
-  }
+export const storageName = {
+  COUNT: "USER-CART-COUNT",
+  CART: "USER-CART",
+  DETAIL: "USER-DETAIL",
+  START: "START",
+};
 
-const counterReducer = (state = { count:0, cartArray: [] }, action) => {
-  if(action.type === counterActions.INCREMENT) {
+const counterReducer = (state = { count: 0, cartArray: [] }, action) => {
+  if (action.type === counterActions.INCREMENT) {
     return {
       ...state,
       count: parseInt(sessionStorage.getItem(storageName.COUNT)) + 1,
-    }
+    };
   }
-  if(action.type === counterActions.DECREMENT) {
+  if (action.type === counterActions.DECREMENT) {
     return {
       ...state,
       count: parseInt(sessionStorage.getItem(storageName.COUNT)) - 1,
-    }
+    };
   }
 
-  if(action.type === counterActions.UPDATE) {
+  if (action.type === counterActions.UPDATE) {
     return {
       count: parseInt(sessionStorage.getItem(storageName.COUNT)),
-      cartArray: JSON.parse("["+sessionStorage.getItem(storageName.CART)+"]"),
-    }
+      cartArray: JSON.parse(
+        "[" + sessionStorage.getItem(storageName.CART) + "]"
+      ),
+    };
   }
-  if(action.type === counterActions.START) {
-    if(!sessionStorage.getItem(storageName.COUNT)){
-        sessionStorage.setItem(storageName.COUNT, 0);
-      }
+  if (action.type === counterActions.START) {
+    if (!sessionStorage.getItem(storageName.COUNT)) {
+      sessionStorage.setItem(storageName.COUNT, 0);
+    }
     return {
       ...state,
-      count: state.count = parseInt(sessionStorage.getItem(storageName.COUNT)),
-    }
+      count: (state.count = parseInt(
+        sessionStorage.getItem(storageName.COUNT)
+      )),
+    };
   }
   return state;
+};
 
-}
-
-const counterStore = createStore(counterReducer);
+const counterStore = legacy_createStore(counterReducer);
 export default counterStore;

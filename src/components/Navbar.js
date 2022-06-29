@@ -25,7 +25,7 @@ const Navbar = (prop) => {
 
         <li className="nav-item">
             <div className="nav-name" to="/">
-              Benvenuto, {user.nome}!
+              Hi, {user.nome}!
             </div>
           </li>
 
@@ -43,14 +43,14 @@ const Navbar = (prop) => {
 
           <li className="nav-item">
             <NavLink className="nav-link" to="/prodotti">
-              Prodotti
+              Shop
             </NavLink>
           </li>
 
 
           <li className="nav-item">
-            <NavLink className="nav-link" to="/carrello">
-              Carrello ({count})
+            <NavLink className="nav-link " to="/carrello">
+              Cart ({count})
             </NavLink>
           </li>
         </ul>
