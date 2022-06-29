@@ -5,7 +5,7 @@ import logo1 from '../assets/Sedia_gaming.jpg';
 import { Carousel } from 'react-bootstrap';
 
 const Home = () => (
-  <div className="h1"> <hr></hr> ⮊ WELLCOME IN TEAM SHOP! ⮈<hr></hr>
+  <div className="h1"> <hr></hr> ⮊ WELCOME IN TEAM SHOP! ⮈<hr></hr>
 <Carousel>
   <Carousel.Item>
     <div className="container">
