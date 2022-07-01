@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { storageName } from "../store/counter-store";
+
+
 const storageKey = "logged-user";
 const AuthContext = React.createContext({
   isLoggedIn: sessionStorage.getItem(storageKey),
